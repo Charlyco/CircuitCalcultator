@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Circuit Calulator</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tank_cct_button">Tank Circuit Image Button</string>
+    <string name="rlc_cct_button">RLC circuit Image Button</string>
+    <string name="ohms_law_btn">Ohms Law Image Button</string>
+    <string name="color_code_btn">Resistor Color Code Image button</string>
+</resources>

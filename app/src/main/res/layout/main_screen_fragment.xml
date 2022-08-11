@@ -4,65 +4,110 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".MainScreenFragment">
 
-    <ImageView
-        android:id="@+id/tankCircuit"
-        android:layout_width="0dp"
-        android:layout_height="128dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:contentDescription="@string/tank_cct_button"
-        app:layout_constraintEnd_toStartOf="@+id/rlcCircuit"
-        app:layout_constraintHorizontal_bias="0.5"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/mainToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bg1"
-        tools:src="@tools:sample/avatars" />
+        app:logo="@android:drawable/ic_lock_idle_charging"
+        app:menu="@menu/main_menu"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:titleTextColor="@color/black" />
 
-    <ImageView
-        android:id="@+id/rlcCircuit"
-        android:layout_width="0dp"
-        android:layout_height="128dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:contentDescription="@string/rlc_cct_button"
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:cardElevation="@dimen/card_view_elevation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tankCircuit"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bg2"
-        tools:src="@tools:sample/avatars" />
-
-    <ImageView
-        android:id="@+id/resistorColorCodes"
-        android:layout_width="0dp"
-        android:layout_height="128dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:contentDescription="@string/color_code_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/ohmsLaw"
-        app:layout_constraintTop_toBottomOf="@+id/rlcCircuit"
-        app:srcCompat="@drawable/bg2"
-        tools:src="@tools:sample/avatars" />
-
-    <ImageView
-        android:id="@+id/ohmsLaw"
-        android:layout_width="0dp"
-        android:layout_height="128dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:contentDescription="@string/ohms_law_btn"
-        app:layout_constraintEnd_toStartOf="@+id/resistorColorCodes"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tankCircuit"
-        app:srcCompat="@drawable/bg3"
-        tools:src="@tools:sample/avatars" />
+        app:layout_constraintTop_toBottomOf="@+id/mainToolbar">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="@dimen/card_view_elevation"
+                android:paddingBottom="@dimen/card_view_pad_bottom">
+
+
+                <TextView
+                    android:id="@+id/tankCircuit"
+                    style="@style/textview_btn_style"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/textview_btn_bgd"
+                    android:contentDescription="@string/tank_cct_button"
+                    android:text="@string/tank_circuit"
+                    app:layout_constraintEnd_toStartOf="@+id/transformer_param_btn"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/transformer_param_btn"
+                    style="@style/textview_btn_style"
+                    android:background="@drawable/textview_btn_bgd"
+                    android:contentDescription="@string/transformer_param"
+                    android:text="@string/transformer_param"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tankCircuit"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/ohmsLaw"
+                    style="@style/textview_btn_style"
+                    android:contentDescription="@string/ohms_law"
+                    android:text="@string/ohms_law"
+                    app:layout_constraintEnd_toStartOf="@+id/resistorColorCodes"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tankCircuit" />
+
+                <TextView
+                    android:id="@+id/resistorColorCodes"
+                    style="@style/textview_btn_style"
+                    android:contentDescription="@string/resistor_color_codes"
+                    android:text="@string/resistor_color_codes"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ohmsLaw"
+                    app:layout_constraintTop_toBottomOf="@+id/transformer_param_btn" />
+
+                <TextView
+                    android:id="@+id/equivalent_res_cap"
+                    style="@style/textview_btn_style"
+                    android:contentDescription="@string/ohms_law"
+                    android:text="@string/resistor_arrangement"
+                    app:layout_constraintEnd_toStartOf="@+id/network_theorems"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ohmsLaw" />
+
+                <TextView
+                    android:id="@+id/network_theorems"
+                    style="@style/textview_btn_style"
+                    android:contentDescription="@string/resistor_color_codes"
+                    android:text="@string/network_theoremes"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/equivalent_res_cap"
+                    app:layout_constraintTop_toBottomOf="@+id/resistorColorCodes" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

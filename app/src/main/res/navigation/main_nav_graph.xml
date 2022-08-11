@@ -9,7 +9,28 @@
         android:id="@+id/mainScreenFragment"
         android:name="com.limitless.circuitcalulator.MainScreenFragment"
         android:label="main_screen_fragment"
-        tools:layout="@layout/main_screen_fragment" />
+        tools:layout="@layout/main_screen_fragment" >
+        <action
+            android:id="@+id/action_mainScreenFragment_to_tankCircutFragment"
+            app:enterAnim="@android:anim/slide_out_right"
+            app:exitAnim="@android:anim/fade_out"
+            app:destination="@id/tankCircuitFragment" />
+        <action
+            android:id="@+id/action_mainScreenFragment_to_transformerFragment"
+            app:destination="@id/transformerFragment" />
+        <action
+            android:id="@+id/action_mainScreenFragment_to_ohmsLawFragment"
+            app:destination="@id/ohmsLawFragment" />
+        <action
+            android:id="@+id/action_mainScreenFragment_to_resistorArrangeFragment"
+            app:destination="@id/resistorArrangeFragment" />
+        <action
+            android:id="@+id/action_mainScreenFragment_to_resistorColorCodeFragment"
+            app:destination="@id/resistorColorCodeFragment" />
+        <action
+            android:id="@+id/action_mainScreenFragment_to_networkTheoremesFragment"
+            app:destination="@id/networkTheoremesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.limitless.circuitcalulator.WelcomeFragment"
@@ -17,9 +38,43 @@
         tools:layout="@layout/fragment_welcome" >
         <action
             android:id="@+id/action_welcomeFragment_to_mainScreenFragment"
+            app:popUpTo="@id/welcomeFragment"
+            app:popUpToInclusive="true"
             app:destination="@id/mainScreenFragment"
             app:enterAnim="@android:anim/slide_out_right"
-            app:exitAnim="@android:anim/fade_out"
-            app:popEnterAnim="@android:anim/slide_out_right" />
+            app:exitAnim="@android:anim/fade_out" />
     </fragment>
+    <fragment
+        android:id="@+id/tankCircuitFragment"
+        android:name="com.limitless.circuitcalulator.calculations.TankCircuitFragment"
+        android:label="TankCircuitFragment" />
+    <fragment
+        android:id="@+id/transformerFragment"
+        android:name="com.limitless.circuitcalulator.calculations.TransformerFragment"
+        android:label="fragment_transformer"
+        tools:layout="@layout/fragment_transformer" />
+    <fragment
+        android:id="@+id/ohmsLawFragment"
+        android:name="com.limitless.circuitcalulator.calculations.OhmsLawFragment"
+        android:label="fragment_ohms_law"
+        tools:layout="@layout/fragment_ohms_law" />
+    <fragment
+        android:id="@+id/resistorArrangeFragment"
+        android:name="com.limitless.circuitcalulator.calculations.ResistorArrangeFragment"
+        android:label="fragment_resistor_arrange"
+        tools:layout="@layout/fragment_resistor_arrange" />
+    <fragment
+        android:id="@+id/resistorColorCodeFragment"
+        android:name="com.limitless.circuitcalulator.calculations.ResistorColorCodeFragment"
+        android:label="fragment_resistor_color_code"
+        tools:layout="@layout/fragment_resistor_color_code" >
+        <action
+            android:id="@+id/action_resistorColorCodeFragment_to_mainScreenFragment"
+            app:destination="@id/mainScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/networkTheoremesFragment"
+        android:name="com.limitless.circuitcalulator.calculations.NetworkTheoremesFragment"
+        android:label="fragment_network_theoremes"
+        tools:layout="@layout/fragment_network_theoremes" />
 </navigation>

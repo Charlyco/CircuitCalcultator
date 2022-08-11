@@ -37,8 +37,7 @@ class WelcomeFragment : Fragment() {
     }
 
     private fun displayMainFragment() {
-        val action = WelcomeFragmentDirections
-            .actionWelcomeFragmentToMainScreenFragment()
-        findNavController().navigate(action)
+        findNavController().navigate(
+            R.id.action_welcomeFragment_to_mainScreenFragment)
     }
 }

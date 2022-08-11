@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="textview_btn_style">
+        <item name="android:layout_width">148dp</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="android:background">@drawable/textview_btn_bgd</item>
+        <item name="android:paddingStart">@dimen/start</item>
+        <item name="android:paddingTop">@dimen/top</item>
+        <item name="android:paddingEnd">@dimen/end</item>
+        <item name="android:paddingBottom">@dimen/bottom</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+    </style>
+</resources>

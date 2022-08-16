@@ -36,7 +36,8 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/card_view_pad_bottom">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -45,65 +46,187 @@
                 android:paddingBottom="@dimen/card_view_pad_bottom">
 
 
-                <TextView
-                    android:id="@+id/tankCircuit"
-                    style="@style/textview_btn_style"
-                    android:layout_marginStart="8dp"
+                <LinearLayout
+                    android:id="@+id/rlc_view_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/textview_btn_bgd"
-                    android:contentDescription="@string/tank_cct_button"
-                    android:text="@string/tank_circuit"
-                    app:layout_constraintEnd_toStartOf="@+id/transformer_param_btn"
-                    app:layout_constraintHorizontal_chainStyle="spread"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/transformer_param_btn"
-                    style="@style/textview_btn_style"
-                    android:background="@drawable/textview_btn_bgd"
-                    android:contentDescription="@string/transformer_param"
-                    android:text="@string/transformer_param"
+                    <ImageButton
+                        android:id="@+id/tankCircuit"
+                        android:layout_width="64dp"
+                        android:layout_height="48dp"
+                        android:contentDescription="@string/tank_cct_button"
+                        android:src="@drawable/rlc_circuit" />
+
+                    <TextView
+                        android:id="@+id/rlc_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tank_circuit"
+                        android:textAlignment="center"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/xformer_view_btn"
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toStartOf="@+id/ohmsLaw_view_btn"
+                    app:layout_constraintStart_toEndOf="@+id/rlc_view_btn"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageButton
+                        android:id="@+id/transformer_param_btn"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:contentDescription="@string/transformer_param"
+                        android:src="@drawable/transformer"
+                        android:text="@string/transformer_param" />
+
+                    <TextView
+                        android:id="@+id/xformer_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/transformer_param"
+                        android:textAlignment="center"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ohmsLaw_view_btn"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/tankCircuit"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/ohmsLaw"
-                    style="@style/textview_btn_style"
-                    android:contentDescription="@string/ohms_law"
-                    android:text="@string/ohms_law"
-                    app:layout_constraintEnd_toStartOf="@+id/resistorColorCodes"
+                    <ImageButton
+                        android:id="@+id/ohmsLaw"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:contentDescription="@string/ohms_law"
+                        android:src="@drawable/ohms_law"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="104dp" />
+
+                    <TextView
+                        android:id="@+id/ohms_law_desc"
+                        android:layout_width="64dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ohms_law_btn"
+                        android:textAlignment="center"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/color_code_view_btn"
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ohmsLaw_view_btn">
+
+                    <ImageButton
+                        android:id="@+id/resistorColorCodes"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:contentDescription="@string/resistor_color_codes"
+                        android:src="@drawable/resistor"
+                        tools:layout_editor_absoluteX="331dp"
+                        tools:layout_editor_absoluteY="111dp" />
+
+                    <TextView
+                        android:id="@+id/color_code_desc"
+                        android:layout_width="64dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/color_code_btn"
+                        android:textAlignment="center"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/resistor_arng_view_btn"
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tankCircuit" />
+                    app:layout_constraintTop_toBottomOf="@+id/rlc_view_btn">
 
-                <TextView
-                    android:id="@+id/resistorColorCodes"
-                    style="@style/textview_btn_style"
-                    android:contentDescription="@string/resistor_color_codes"
-                    android:text="@string/resistor_color_codes"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/ohmsLaw"
-                    app:layout_constraintTop_toBottomOf="@+id/transformer_param_btn" />
+                    <ImageButton
+                        android:id="@+id/equivalent_res_cap"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:contentDescription="@string/ohms_law"
+                        android:src="@drawable/res_arrange"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="106dp" />
 
-                <TextView
-                    android:id="@+id/equivalent_res_cap"
-                    style="@style/textview_btn_style"
-                    android:contentDescription="@string/ohms_law"
-                    android:text="@string/resistor_arrangement"
-                    app:layout_constraintEnd_toStartOf="@+id/network_theorems"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ohmsLaw" />
+                    <TextView
+                        android:id="@+id/res_arng_code_desc"
+                        android:layout_width="64dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/resistor_arrangement"
+                        android:textAlignment="center"
+                        android:textSize="11sp" />
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/network_theorems"
-                    style="@style/textview_btn_style"
-                    android:contentDescription="@string/resistor_color_codes"
-                    android:text="@string/network_theoremes"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/equivalent_res_cap"
-                    app:layout_constraintTop_toBottomOf="@+id/resistorColorCodes" />
+                <LinearLayout
+                    android:id="@+id/ntwk_theorems_view_btn"
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toStartOf="@+id/color_code_view_btn"
+                    app:layout_constraintStart_toEndOf="@+id/resistor_arng_view_btn"
+                    app:layout_constraintTop_toBottomOf="@+id/xformer_view_btn">
+
+                    <ImageButton
+                        android:id="@+id/network_theorems"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:contentDescription="@string/resistor_color_codes"
+                        android:src="@drawable/network_theorems" />
+
+                    <TextView
+                        android:id="@+id/ntwk_theorems_desc"
+                        android:layout_width="64dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/network_theorems"
+                        android:textAlignment="center"
+                        android:textSize="11sp" />
+                </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

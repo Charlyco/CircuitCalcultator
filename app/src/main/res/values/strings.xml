@@ -20,5 +20,9 @@
     <string name="resistor_value">The value of your resistor is as follows:</string>
     <string name="calculate">CALCULATE</string>
     <string name="color_code_frag_title">Resistor Colour Coding</string>
+    <string name="tank_description">Input to the parameters of the circuit</string>
+    <string name="frequency">Resonance Frequency</string>
+    <string name="capacitance">Capacitance</string>
+    <string name="inductance">Inductance</string>
 
 </resources>

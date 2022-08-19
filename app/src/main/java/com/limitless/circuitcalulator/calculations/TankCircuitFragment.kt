@@ -5,56 +5,118 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.*
+import androidx.appcompat.widget.Toolbar
+import androidx.navigation.fragment.findNavController
 import com.limitless.circuitcalulator.R
+import com.limitless.circuitcalulator.databinding.FragmentTankCircutBinding
+import kotlin.math.PI
+import kotlin.math.sqrt
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [TankCircuitFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class TankCircuitFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    companion object {
+        fun newInstance() =
+            TankCircuitFragment()
     }
+    private lateinit var rlcRadioGroup: RadioGroup
+    private lateinit var frequencyBox: EditText
+    private lateinit var capacitanceBox: EditText
+    private lateinit var inductanceBox: EditText
+    private lateinit var result: TextView
+    private lateinit var calButton: Button
+    private lateinit var binding: FragmentTankCircutBinding
+    private lateinit var toolbar:Toolbar
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tank_circut, container, false)
+        binding = FragmentTankCircutBinding.inflate(inflater, container, false)
+        rlcRadioGroup = binding.rlcRadioGroup
+        frequencyBox = binding.freqEditText
+        capacitanceBox = binding.capEditText
+        inductanceBox = binding.indEditText
+        calButton = binding.rlcCalcButton
+        result = binding.rlcResultTextView
+
+        rlcRadioGroup.setOnCheckedChangeListener { radioGroup,
+                                                   i -> radioGroup.checkedRadioButtonId
+            when (i) {
+                R.id.frequencyBtn -> hideFrequency()
+
+                R.id.capacitanceBtn -> hideCapacitance()
+
+                R.id.inductnaceBtn -> hideInductance()
+            }
+        }
+        calButton.setOnClickListener { calculateParam() }
+
+        toolbar = binding.tankCctToolbar
+        toolbar.title = getString(R.string.tank_circuit)
+        toolbar.setNavigationOnClickListener {
+            findNavController().navigate(
+                R.id.action_tankCircuitFragment_to_mainScreenFragment)}
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment TankCircuitFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            TankCircuitFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun calculateParam() {
+        when (rlcRadioGroup.checkedRadioButtonId) {
+            R.id.frequencyBtn -> calcFrequency()
+
+            R.id.capacitanceBtn -> calcCapacitance()
+
+            R.id.inductnaceBtn -> calcInductance()
+        }
     }
+
+    private fun calcInductance() {
+        val frequency = frequencyBox.text.toString().toDouble()
+        val capacitance = capacitanceBox.text.toString().toDouble()
+        val inductance = (sqrt((1 / (2 * PI * frequency))) / capacitance)
+
+        result.text = "Inductance = SquareRoot((1/2 * PI * $frequency) / $capacitance) \n\n" +
+                "Capacitance = ${ "%.4f".format(inductance) }H"
+    }
+
+    private fun calcCapacitance() {
+        val inductance = inductanceBox.text.toString().toDouble()
+        val frequency = frequencyBox.text.toString().toDouble()
+        val capacitance = (sqrt((1 / (2 * PI * frequency))) / inductance)
+
+        result.text = "Capacitance = SquareRoot((1/2 * PI * $frequency) / $inductance) \n\n" +
+                "Capacitance = ${ "%.2f".format(capacitance * 1000000) }uF"
+    }
+
+    private fun calcFrequency() {
+        val capacitance = capacitanceBox.text.toString().toDouble()
+        val inductance = inductanceBox.text.toString().toDouble()
+        val resonanceFreq = 1 / (2 * PI * (sqrt(capacitance * inductance)))
+        result.text = "Resonance Frequency = 1/ (2 * PI * SquareRoot($inductance * $capacitance). \n\n" +
+                "Frequency = ${ "%.1f".format(resonanceFreq) }Hz"
+    }
+
+    private fun hideInductance() {
+        frequencyBox.visibility = View.VISIBLE
+        capacitanceBox.visibility = View.VISIBLE
+        inductanceBox.visibility = View.GONE
+        calButton.visibility = View.VISIBLE
+    }
+
+    private fun hideCapacitance() {
+        frequencyBox.visibility = View.VISIBLE
+        capacitanceBox.visibility = View.GONE
+        inductanceBox.visibility = View.VISIBLE
+        calButton.visibility = View.VISIBLE
+    }
+
+    private fun hideFrequency() {
+        frequencyBox.visibility = View.GONE
+        capacitanceBox.visibility = View.VISIBLE
+        inductanceBox.visibility = View.VISIBLE
+        calButton.visibility = View.VISIBLE
+    }
+
+
 }

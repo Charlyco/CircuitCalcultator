@@ -47,7 +47,11 @@
     <fragment
         android:id="@+id/tankCircuitFragment"
         android:name="com.limitless.circuitcalulator.calculations.TankCircuitFragment"
-        android:label="TankCircuitFragment" />
+        android:label="TankCircuitFragment" >
+        <action
+            android:id="@+id/action_tankCircuitFragment_to_mainScreenFragment"
+            app:destination="@id/mainScreenFragment" />
+    </fragment>
     <fragment
         android:id="@+id/transformerFragment"
         android:name="com.limitless.circuitcalulator.calculations.TransformerFragment"

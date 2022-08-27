@@ -20,9 +20,14 @@
     <string name="resistor_value">The value of your resistor is as follows:</string>
     <string name="calculate">CALCULATE</string>
     <string name="color_code_frag_title">Resistor Colour Coding</string>
-    <string name="tank_description">What parameter do you want to find its value?</string>
+    <string name="tank_description">Select a parameter to calculate its value</string>
     <string name="frequency">Resonance Frequency (in Hertz)</string>
     <string name="capacitance">Capacitance (in micro Farad)</string>
     <string name="inductance">Inductance (in Henry)</string>
+    <string name="transformers">3-Phase Transformers</string>
+    <string name="delta_to_star">Delta to Star</string>
+    <string name="star_to_delta">Star to Delta</string>
+    <string name="transformer_description">3-Phase Transformer</string>
+    <string name="box1">0.0</string>
 
 </resources>

@@ -56,7 +56,11 @@
         android:id="@+id/transformerFragment"
         android:name="com.limitless.circuitcalulator.calculations.TransformerFragment"
         android:label="fragment_transformer"
-        tools:layout="@layout/fragment_transformer" />
+        tools:layout="@layout/fragment_transformer" >
+        <action
+            android:id="@+id/action_transformerFragment_to_mainScreenFragment"
+            app:destination="@id/mainScreenFragment" />
+    </fragment>
     <fragment
         android:id="@+id/ohmsLawFragment"
         android:name="com.limitless.circuitcalulator.calculations.OhmsLawFragment"

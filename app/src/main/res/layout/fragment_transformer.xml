@@ -1,14 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".calculations.TransformerFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/xformerToolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="@dimen/elevation"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/main_menu"
+        app:navigationIcon="?attr/actionModeCloseDrawable"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="@string/transformers"
+        app:titleTextColor="@color/black" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/textViewxformeer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/tank_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/xformerToolbar" />
+
+    <EditText
+        android:id="@+id/xformerParam2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/textview_btn_bgd"
+        android:ems="10"
+        android:hint="@string/box1"
+        android:inputType="number|numberDecimal"
+        android:minHeight="48dp"
+        android:paddingStart="@dimen/start"
+        app:layout_constraintEnd_toStartOf="@+id/xformeerParam3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/xformerParam1"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <RadioGroup
+        android:id="@+id/xFormerRadioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewxformeer">
+
+        <RadioButton
+            android:id="@+id/starToDeltaBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/star_to_delta" />
+
+        <RadioButton
+            android:id="@+id/deltaToStarBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/delta_to_star" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/xformerCalcButton"
+        style="@style/Widget.Material3.Button.ElevatedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/button_pressed"
+        android:elevation="@dimen/high_elevation"
+        android:paddingStart="64dp"
+        android:paddingTop="4dp"
+        android:paddingEnd="64dp"
+        android:paddingBottom="4dp"
+        android:text="@string/calculate"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/xformerParam2"
+        app:strokeWidth="@dimen/stroke_width"
+        tools:visibility="visible" />
+
+    <EditText
+        android:id="@+id/xformeerParam3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/textview_btn_bgd"
+        android:ems="10"
+        android:hint="@string/box1"
+        android:inputType="number|numberDecimal"
+        android:minHeight="48dp"
+        android:paddingStart="@dimen/start"
+        app:layout_constraintBottom_toBottomOf="@+id/xformerParam2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/xformerParam2"
+        app:layout_constraintTop_toTopOf="@+id/xformerParam2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/xformerParam1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/textview_btn_bgd"
+        android:ems="10"
+        android:hint="@string/box1"
+        android:inputType="number|numberDecimal"
+        android:minHeight="48dp"
+        android:paddingStart="@dimen/start"
+        app:layout_constraintBottom_toBottomOf="@+id/xformerParam2"
+        app:layout_constraintEnd_toStartOf="@+id/xformerParam2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/xformerParam2" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/third_colour"
+        android:src="@drawable/delta_star"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/xFormerRadioGroup"
+        tools:ignore="ImageContrastCheck" />
+
+    <TextView
+        android:id="@+id/xformerResultTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/textview_btn_bgd"
+        android:elevation="@dimen/high_elevation"
+        android:foregroundTintMode="add"
+        android:paddingStart="@dimen/start"
+        android:paddingTop="@dimen/top"
+        android:paddingEnd="@dimen/end"
+        android:paddingBottom="@dimen/bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/xformerCalcButton" />
+</androidx.constraintlayout.widget.ConstraintLayout>

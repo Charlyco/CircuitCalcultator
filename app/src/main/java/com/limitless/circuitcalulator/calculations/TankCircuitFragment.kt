@@ -27,7 +27,6 @@ class TankCircuitFragment : Fragment() {
     private lateinit var binding: FragmentTankCircutBinding
     private lateinit var toolbar:Toolbar
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -72,29 +71,60 @@ class TankCircuitFragment : Fragment() {
     }
 
     private fun calcInductance() {
-        val frequency = frequencyBox.text.toString().toDouble()
-        val capacitance = capacitanceBox.text.toString().toDouble()
-        val inductance = (sqrt((1 / (2 * PI * frequency))) / capacitance)
+        if (frequencyBox.text.isEmpty() || capacitanceBox.text.isEmpty()) {
+            Toast.makeText(activity, "Input all necessary data", Toast.LENGTH_LONG).show()
+        }else {
+            val frequency = frequencyBox.text.toString().toDouble()
+            val capacitance = capacitanceBox.text.toString().toDouble()
+            val inductance = (sqrt((1 / (2 * PI * frequency))) / capacitance)
 
-        result.text = "Inductance = SquareRoot((1/2 * PI * $frequency) / $capacitance) \n\n" +
-                "Capacitance = ${ "%.4f".format(inductance) }H"
+            result.text = buildString {
+                append("Inductance = SquareRoot((1/2 * PI * ")
+                append(frequency)
+                append(") / ")
+                append(capacitance)
+                append(") \n\n")
+                append("Capacitance = ${"%.4f".format(inductance)}H")
+            }
+        }
     }
 
     private fun calcCapacitance() {
-        val inductance = inductanceBox.text.toString().toDouble()
-        val frequency = frequencyBox.text.toString().toDouble()
-        val capacitance = (sqrt((1 / (2 * PI * frequency))) / inductance)
+        if (frequencyBox.text.isEmpty() || inductanceBox.text.isEmpty()) {
+            Toast.makeText(activity, "Input all necessary data", Toast.LENGTH_LONG).show()
+        }else {
+            val inductance = inductanceBox.text.toString().toDouble()
+            val frequency = frequencyBox.text.toString().toDouble()
+            val capacitance = (sqrt((1 / (2 * PI * frequency))) / inductance)
 
-        result.text = "Capacitance = SquareRoot((1/2 * PI * $frequency) / $inductance) \n\n" +
-                "Capacitance = ${ "%.2f".format(capacitance * 1000000) }uF"
+            result.text = buildString {
+                append("Capacitance = SquareRoot((1/2 * PI * ")
+                append(frequency)
+                append(") / ")
+                append(inductance)
+                append(") \n\n")
+                append ("Capacitance = ${ "%.2f".format(capacitance * 1000000) }uF")
+            }
+        }
     }
 
     private fun calcFrequency() {
-        val capacitance = capacitanceBox.text.toString().toDouble()
-        val inductance = inductanceBox.text.toString().toDouble()
-        val resonanceFreq = 1 / (2 * PI * (sqrt(capacitance * inductance)))
-        result.text = "Resonance Frequency = 1/ (2 * PI * SquareRoot($inductance * $capacitance). \n\n" +
-                "Frequency = ${ "%.1f".format(resonanceFreq) }Hz"
+        if (capacitanceBox.text.isEmpty() || inductanceBox.text.isEmpty()) {
+            Toast.makeText(activity, "Input all necessary data", Toast.LENGTH_LONG).show()
+        } else {
+            val capacitance = capacitanceBox.text.toString().toDouble()
+            val inductance = inductanceBox.text.toString().toDouble()
+            val resonanceFreq = 1 / (2 * PI * (sqrt(capacitance * inductance)))
+
+            result.text = buildString {
+                append("Resonance Frequency = 1/ (2 * PI * SquareRoot(")
+                append(inductance)
+                append(" * ")
+                append(capacitance)
+                append("). \n\n")
+                append("Resonance Frequency = ${"%.1f".format(resonanceFreq)}Hz")
+            }
+        }
     }
 
     private fun hideInductance() {

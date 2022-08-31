@@ -90,7 +90,7 @@ class ResistorColorCodeFragment : Fragment(), AdapterView.OnItemSelectedListener
 
         val firstColours = "${firstBand - 1}$secondBand"
         val resistorValue = firstColours.toInt() * 10.0.pow(thirdBand)
-        val resultDescription = "Value of Resistor: ${resistorValue.toInt()} ohms \n" +
+        val resultDescription = "Value of Resistor: ${resistorValue.toInt()} ohms (${(resistorValue.toInt())/1000} kilo Ohms) \n" +
                 "Tolerance: ${getTolerance(fourthBand) * 100}% "
         resultTextView.text = resultDescription
     }

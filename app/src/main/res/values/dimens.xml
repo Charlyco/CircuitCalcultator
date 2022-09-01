@@ -10,4 +10,5 @@
     <dimen name="elevation">4dp</dimen>
     <dimen name="stroke_width">4dp</dimen>
     <dimen name="high_elevation">8dp</dimen>
+    <dimen name="circle_menu_dist">84dp</dimen>
 </resources>

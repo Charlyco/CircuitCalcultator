@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="app_bg_color">#C6E3FA</color>
-    <color name="purple_700">#03A9F4</color>
-    <color name="teal_200">#0327DA</color>
-    <color name="teal_700">#FF018786</color>
+    <color name="app_bg_color">#B580F2</color>
+    <color name="app_bg_color_var">#497CE3</color>
+    <color name="app_blue">#0327DA</color>
+    <color name="app_color_5">#3A80F7</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="app_color_2">#497CE3</color>
+    <color name="app_color_3">#E7C095</color>
+    <color name="app_color_4">#1A87FA</color>
 </resources>

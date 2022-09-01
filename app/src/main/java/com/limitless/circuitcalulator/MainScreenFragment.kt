@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
-import android.widget.LinearLayout
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.findNavController
 import com.limitless.circuitcalulator.databinding.MainScreenFragmentBinding
@@ -21,17 +20,13 @@ class MainScreenFragment : Fragment() {
     private lateinit var viewModelFactory: MainScreenViewModelFactory
     private lateinit var binding: MainScreenFragmentBinding
     private lateinit var tankCircuit: ImageButton
-    private lateinit var xformer_params: ImageButton
-    private lateinit var ohms_law: ImageButton
-    private lateinit var resistor_color_code: ImageButton
-    private lateinit var resistor_arrangemnet: ImageButton
-    private lateinit var network_theoremes: ImageButton
+    private lateinit var transformerParams: ImageButton
+    private lateinit var ohmsLaw: ImageButton
+    private lateinit var resistorColorCode: ImageButton
+    private lateinit var resistorArrangement: ImageButton
+    private lateinit var networkTheoremes: ImageButton
     private lateinit var toolbar: Toolbar
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -49,20 +44,20 @@ class MainScreenFragment : Fragment() {
         tankCircuit = binding.tankCircuit
         tankCircuit.setOnClickListener { navigateToFragment(tankCircuit) }
 
-        xformer_params = binding.transformerParamBtn
-        xformer_params.setOnClickListener { navigateToFragment(xformer_params) }
+        transformerParams = binding.transformerParamBtn
+        transformerParams.setOnClickListener { navigateToFragment(transformerParams) }
 
-        ohms_law = binding.ohmsLaw
-        ohms_law.setOnClickListener { navigateToFragment(ohms_law) }
+        ohmsLaw = binding.ohmsLaw
+        ohmsLaw.setOnClickListener { navigateToFragment(ohmsLaw) }
 
-        resistor_color_code = binding.resistorColorCodes
-        resistor_color_code.setOnClickListener { navigateToFragment(resistor_color_code) }
+        resistorColorCode = binding.resistorColorCodes
+        resistorColorCode.setOnClickListener { navigateToFragment(resistorColorCode) }
 
-        resistor_arrangemnet = binding.equivalentResCap
-        resistor_arrangemnet.setOnClickListener { navigateToFragment(resistor_arrangemnet) }
+        resistorArrangement = binding.equivalentResCap
+        resistorArrangement.setOnClickListener { navigateToFragment(resistorArrangement) }
 
-        network_theoremes = binding.networkTheorems
-        network_theoremes.setOnClickListener { navigateToFragment(network_theoremes) }
+        networkTheoremes = binding.networkTheorems
+        networkTheoremes.setOnClickListener { navigateToFragment(networkTheoremes) }
 
         return binding.root
     }
@@ -73,25 +68,25 @@ class MainScreenFragment : Fragment() {
                 findNavController().navigate(
                     R.id.action_mainScreenFragment_to_tankCircutFragment)
             }
-            xformer_params -> {
+            transformerParams -> {
                 findNavController().navigate(
                     R.id.action_mainScreenFragment_to_transformerFragment)
             }
-            ohms_law -> {
+            ohmsLaw -> {
                 findNavController().navigate(
                     R.id.action_mainScreenFragment_to_ohmsLawFragment)
             }
-            resistor_color_code -> {
+            resistorColorCode -> {
                 findNavController().navigate(
                     R.id.action_mainScreenFragment_to_resistorColorCodeFragment
                 )
             }
-            resistor_arrangemnet -> {
+            resistorArrangement -> {
                 findNavController().navigate(
                     R.id.action_mainScreenFragment_to_resistorArrangeFragment
                 )
             }
-            network_theoremes -> {
+            networkTheoremes -> {
                 findNavController().navigate(
                     R.id.action_mainScreenFragment_to_networkTheoremesFragment
                 )

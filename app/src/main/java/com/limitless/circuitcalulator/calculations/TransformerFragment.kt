@@ -7,9 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.limitless.circuitcalulator.R
 import com.limitless.circuitcalulator.databinding.FragmentTransformerBinding
+import com.limitless.circuitcalulator.viewModels.TransformerViewModel
+import com.limitless.circuitcalulator.viewModels.TransformerViewModelFactory
 import java.security.spec.ECFieldF2m
 
 class TransformerFragment : Fragment() {
@@ -17,6 +21,8 @@ class TransformerFragment : Fragment() {
         fun newInstance() =
             TransformerFragment()
     }
+    private lateinit var viewModel: TransformerViewModel
+    private lateinit var viewModelFactory: TransformerViewModelFactory
     private lateinit var radioGroup: RadioGroup
     private lateinit var resultTextView: TextView
     private lateinit var calcButton: Button
@@ -52,8 +58,11 @@ class TransformerFragment : Fragment() {
             R.id.deltaToStarBtn -> fillBoxWithDeltaParam(i)
             }
         }
-
         calcButton.setOnClickListener { config?.let { it1 -> calculateParam(it1) } }
+        val application = requireActivity().application
+        viewModelFactory = TransformerViewModelFactory(application)
+        viewModel = ViewModelProvider(this, viewModelFactory)[TransformerViewModel::class.java]
+
         return binding.root
     }
 
@@ -72,21 +81,7 @@ class TransformerFragment : Fragment() {
             val a = inputBox1.text.toString().toDouble()
             val b = inputBox2.text.toString().toDouble()
             val c = inputBox3.text.toString().toDouble()
-            val ab: Double = (a * b) / (a + b + c)
-            val bc: Double = (b * c) / (a + b + c)
-            val ac: Double = (a * c) / (a + b + c)
-            resultTextView.text = buildString {
-                append("The Resulting Delta Connection:\n\n")
-                append("AB = (a * b) / (a + b+ c) = ")
-                append("%.2f".format(ab))
-                append(" Ohms\n\n")
-                append("BC = (b * c) / (a + b+ c) = ")
-                append("%.2f".format(bc))
-                append(" Ohms\n\n")
-                append("AC = (a * c) / (a + b+ c) = ")
-                append("%.2f".format(ac))
-                append(" Ohms\n\n")
-            }
+            resultTextView.text = viewModel.calcStarParam(a, b, c)
         }
     }
     private fun calculateDeltaParam() {
@@ -96,22 +91,7 @@ class TransformerFragment : Fragment() {
             val a = inputBox1.text.toString().toDouble()
             val b = inputBox2.text.toString().toDouble()
             val c = inputBox3.text.toString().toDouble()
-
-            val A = a + b + ((a * b)/c)
-            val B = b + c + ((b * c)/a)
-            val C = a + c + ((a * c)/b)
-            resultTextView.text = buildString {
-                append("The Resulting Star Connection:\n\n")
-                append("A = a + b + ((a * b)/c) = ")
-                append("%.2f".format(A))
-                append(" Ohms\n\n")
-                append("B = b + c + ((b * c)/a) = ")
-                append("%.2f".format(B))
-                append(" Ohms\n\n")
-                append("C = a + c + ((a * c)/b) = ")
-                append("%.2f".format(C))
-                append(" Ohms\n\n")
-            }
+            resultTextView.text = viewModel.calcDeltaParam(a, b, c)
         }
     }
 

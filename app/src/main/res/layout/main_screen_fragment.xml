@@ -1,236 +1,235 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_color_2"
+    tools:context=".MainScreenFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/mainToolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/app_bg_color"
-        tools:context=".MainScreenFragment">
+        android:layout_height="wrap_content"
+        android:background="@color/app_color_2"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:logo="@android:drawable/ic_lock_idle_charging"
+        app:menu="@menu/main_menu"
+        app:titleTextColor="@color/black" />
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/mainToolbar"
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:cardElevation="@dimen/card_view_elevation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainToolbar">
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/app_bg_color"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:logo="@android:drawable/ic_lock_idle_charging"
-            app:menu="@menu/main_menu"
-            app:titleTextColor="@color/black" />
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:paddingBottom="@dimen/card_view_pad_bottom">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            app:cardCornerRadius="@dimen/card_corner_radius"
-            app:cardElevation="@dimen/card_view_elevation"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mainToolbar">
-
-            <ScrollView
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white"
+                android:layout_height="wrap_content"
+                android:elevation="@dimen/card_view_elevation"
                 android:paddingBottom="@dimen/card_view_pad_bottom">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:id="@+id/rlc_view_btn"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:elevation="@dimen/card_view_elevation"
-                    android:paddingBottom="@dimen/card_view_pad_bottom">
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/white"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <LinearLayout
-                        android:id="@+id/rlc_view_btn"
+                    <ImageButton
+                        android:id="@+id/tankCircuit"
+                        android:layout_width="64dp"
+                        android:layout_height="48dp"
+                        android:contentDescription="@string/tank_cct_button"
+                        android:src="@drawable/rlc_circuit" />
+
+                    <TextView
+                        android:id="@+id/rlc_desc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/white"
-                        android:focusable="true"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        android:text="@string/tank_circuit"
+                        android:textAlignment="center"
+                        android:textSize="11sp" />
+                </LinearLayout>
 
-                        <ImageButton
-                            android:id="@+id/tankCircuit"
-                            android:layout_width="64dp"
-                            android:layout_height="48dp"
-                            android:contentDescription="@string/tank_cct_button"
-                            android:src="@drawable/rlc_circuit" />
+                <LinearLayout
+                    android:id="@+id/xformer_view_btn"
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/white"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toStartOf="@+id/ohmsLaw_view_btn"
+                    app:layout_constraintStart_toEndOf="@+id/rlc_view_btn"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                        <TextView
-                            android:id="@+id/rlc_desc"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/tank_circuit"
-                            android:textAlignment="center"
-                            android:textSize="11sp" />
-                    </LinearLayout>
+                    <ImageButton
+                        android:id="@+id/transformer_param_btn"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:contentDescription="@string/transformer_param"
+                        android:src="@drawable/transformer"
+                        android:text="@string/transformer_param" />
 
-                    <LinearLayout
-                        android:id="@+id/xformer_view_btn"
+                    <TextView
+                        android:id="@+id/xformer_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/transformer_param"
+                        android:textAlignment="center"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ohmsLaw_view_btn"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@color/white"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageButton
+                        android:id="@+id/ohmsLaw"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:contentDescription="@string/ohms_law"
+                        android:src="@drawable/ohms_law"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="104dp" />
+
+                    <TextView
+                        android:id="@+id/ohms_law_desc"
                         android:layout_width="64dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/white"
-                        android:focusable="true"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        app:layout_constraintEnd_toStartOf="@+id/ohmsLaw_view_btn"
-                        app:layout_constraintStart_toEndOf="@+id/rlc_view_btn"
-                        app:layout_constraintTop_toTopOf="parent">
+                        android:text="@string/ohms_law_btn"
+                        android:textAlignment="center"
+                        android:textSize="11sp" />
+                </LinearLayout>
 
-                        <ImageButton
-                            android:id="@+id/transformer_param_btn"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:contentDescription="@string/transformer_param"
-                            android:src="@drawable/transformer"
-                            android:text="@string/transformer_param" />
+                <LinearLayout
+                    android:id="@+id/color_code_view_btn"
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@color/white"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ohmsLaw_view_btn">
 
-                        <TextView
-                            android:id="@+id/xformer_desc"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/transformer_param"
-                            android:textAlignment="center"
-                            android:textSize="11sp" />
-                    </LinearLayout>
+                    <ImageButton
+                        android:id="@+id/resistorColorCodes"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:contentDescription="@string/resistor_color_codes"
+                        android:src="@drawable/resistor"
+                        tools:layout_editor_absoluteX="331dp"
+                        tools:layout_editor_absoluteY="111dp" />
 
-                    <LinearLayout
-                        android:id="@+id/ohmsLaw_view_btn"
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:background="@color/white"
-                        android:focusable="true"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <ImageButton
-                            android:id="@+id/ohmsLaw"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:contentDescription="@string/ohms_law"
-                            android:src="@drawable/ohms_law"
-                            tools:layout_editor_absoluteX="16dp"
-                            tools:layout_editor_absoluteY="104dp" />
-
-                        <TextView
-                            android:id="@+id/ohms_law_desc"
-                            android:layout_width="64dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/ohms_law_btn"
-                            android:textAlignment="center"
-                            android:textSize="11sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/color_code_view_btn"
+                    <TextView
+                        android:id="@+id/color_code_desc"
                         android:layout_width="64dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:layout_marginEnd="16dp"
-                        android:background="@color/white"
-                        android:focusable="true"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ohmsLaw_view_btn">
-
-                        <ImageButton
-                            android:id="@+id/resistorColorCodes"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:contentDescription="@string/resistor_color_codes"
-                            android:src="@drawable/resistor"
-                            tools:layout_editor_absoluteX="331dp"
-                            tools:layout_editor_absoluteY="111dp" />
-
-                        <TextView
-                            android:id="@+id/color_code_desc"
-                            android:layout_width="64dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/color_code_btn"
-                            android:textAlignment="center"
-                            android:textSize="11sp" />
-                    </LinearLayout>
+                        android:text="@string/color_code_btn"
+                        android:textAlignment="center"
+                        android:textSize="11sp" />
+                </LinearLayout>
 
 
-                    <LinearLayout
-                        android:id="@+id/resistor_arng_view_btn"
+                <LinearLayout
+                    android:id="@+id/resistor_arng_view_btn"
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@color/white"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rlc_view_btn">
+
+                    <ImageButton
+                        android:id="@+id/equivalent_res_cap"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:contentDescription="@string/ohms_law"
+                        android:src="@drawable/res_arrange"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="106dp" />
+
+                    <TextView
+                        android:id="@+id/res_arng_code_desc"
                         android:layout_width="64dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="24dp"
-                        android:background="@color/white"
-                        android:focusable="true"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/rlc_view_btn">
+                        android:text="@string/resistor_arrangement"
+                        android:textAlignment="center"
+                        android:textSize="11sp" />
+                </LinearLayout>
 
-                        <ImageButton
-                            android:id="@+id/equivalent_res_cap"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:contentDescription="@string/ohms_law"
-                            android:src="@drawable/res_arrange"
-                            tools:layout_editor_absoluteX="16dp"
-                            tools:layout_editor_absoluteY="106dp" />
+                <LinearLayout
+                    android:id="@+id/ntwk_theorems_view_btn"
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:background="@color/white"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toStartOf="@+id/color_code_view_btn"
+                    app:layout_constraintStart_toEndOf="@+id/resistor_arng_view_btn"
+                    app:layout_constraintTop_toBottomOf="@+id/xformer_view_btn">
 
-                        <TextView
-                            android:id="@+id/res_arng_code_desc"
-                            android:layout_width="64dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/resistor_arrangement"
-                            android:textAlignment="center"
-                            android:textSize="11sp" />
-                    </LinearLayout>
+                    <ImageButton
+                        android:id="@+id/network_theorems"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:contentDescription="@string/resistor_color_codes"
+                        android:src="@drawable/network_theorems" />
 
-                    <LinearLayout
-                        android:id="@+id/ntwk_theorems_view_btn"
+                    <TextView
+                        android:id="@+id/ntwk_theorems_desc"
                         android:layout_width="64dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:background="@color/white"
-                        android:focusable="true"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        app:layout_constraintEnd_toStartOf="@+id/color_code_view_btn"
-                        app:layout_constraintStart_toEndOf="@+id/resistor_arng_view_btn"
-                        app:layout_constraintTop_toBottomOf="@+id/xformer_view_btn">
+                        android:text="@string/network_theorems"
+                        android:textAlignment="center"
+                        android:textSize="11sp" />
+                </LinearLayout>
 
-                        <ImageButton
-                            android:id="@+id/network_theorems"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:contentDescription="@string/resistor_color_codes"
-                            android:src="@drawable/network_theorems" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
 
-                        <TextView
-                            android:id="@+id/ntwk_theorems_desc"
-                            android:layout_width="64dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/network_theorems"
-                            android:textAlignment="center"
-                            android:textSize="11sp" />
-                    </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </ScrollView>
-
-        </androidx.cardview.widget.CardView>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

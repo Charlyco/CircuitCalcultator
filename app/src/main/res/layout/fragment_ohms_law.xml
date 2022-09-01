@@ -1,15 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/app_bg_color"
+    android:background="@color/white"
     tools:context=".calculations.OhmsLawFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/ohmsLaTtoolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/app_color_2"
+        android:elevation="@dimen/elevation"
+        android:minHeight="?attr/actionBarSize"
+        android:textColor="@color/app_color_3"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/main_menu"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        app:title="@string/ohms_law" />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="292dp"
+        android:layout_height="233dp"
+        android:src="@drawable/ohm"
+        app:layout_constraintBottom_toBottomOf="@+id/ohmCircleMenu"
+        app:layout_constraintEnd_toEndOf="@+id/ohmCircleMenu"
+        app:layout_constraintStart_toStartOf="@+id/ohmCircleMenu"
+        app:layout_constraintTop_toBottomOf="@+id/ohmsLaTtoolbar" />
+
+    <com.ramotion.circlemenu.CircleMenuView
+        android:id="@+id/ohmCircleMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/elevation"
+        app:barrierMargin="?attr/dialogCornerRadius"
+        app:button_colors="@array/circleMenuColors"
+        app:button_icons="@array/circleMenuIcons"
+        app:distance="@dimen/circle_menu_dist"
+        app:icon_color="@color/app_bg_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ohmsLaTtoolbar" />
+
+    <EditText
+        android:id="@+id/voltageBox"
+        style="@style/Widget.AppCompat.AutoCompleteTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/textview_btn_bgd"
+        android:elevation="@dimen/elevation"
+        android:ems="10"
+        android:hint="@string/voltage"
+        android:inputType="numberDecimal|number"
+        android:minHeight="48dp"
+        android:paddingStart="@dimen/start"
+        android:textColor="@color/black"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@+id/currentBox"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ohmCircleMenu"
+        tools:visibility="visible" />
+
+    <EditText
+        android:id="@+id/currentBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/textview_btn_bgd"
+        android:elevation="@dimen/elevation"
+        android:ems="10"
+        android:hint="@string/current"
+        android:inputType="number|numberDecimal"
+        android:minHeight="48dp"
+        android:paddingStart="@dimen/start"
+        android:textColor="@color/black"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/voltageBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/voltageBox"
+        app:layout_constraintTop_toTopOf="@+id/voltageBox"
+        app:layout_constraintVertical_bias="0.0"
+        tools:visibility="visible" />
+
+    <EditText
+        android:id="@+id/resistanceBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/textview_btn_bgd"
+        android:elevation="@dimen/elevation"
+        android:ems="10"
+        android:hint="@string/resistance"
+        android:inputType="number|numberDecimal"
+        android:minHeight="48dp"
+        android:paddingStart="@dimen/start"
+        android:textColor="@color/black"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@+id/powerBox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/voltageBox"
+        tools:visibility="visible" />
+
+    <EditText
+        android:id="@+id/powerBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/textview_btn_bgd"
+        android:elevation="@dimen/elevation"
+        android:ems="10"
+        android:hint="@string/power"
+        android:inputType="number|numberDecimal"
+        android:minHeight="48dp"
+        android:paddingStart="@dimen/start"
+        android:textColor="@color/black"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/resistanceBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/resistanceBox"
+        app:layout_constraintTop_toTopOf="@+id/resistanceBox"
+        tools:visibility="visible" />
+
+    <Button
+        android:id="@+id/ohmaCalcButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/button_bg_solid"
+        android:elevation="@dimen/elevation"
+        android:paddingStart="64dp"
+        android:paddingTop="4dp"
+        android:paddingEnd="64dp"
+        android:paddingBottom="4dp"
+        android:text="@string/calculate"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resistanceBox"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/ohmsLawResult"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/textview_btn_bgd"
+        android:elevation="@dimen/elevation"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ohmaCalcButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

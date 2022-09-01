@@ -4,28 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/app_bg_color"
+    android:background="@color/app_color_2"
     tools:context=".calculations.ResistorColorCodeFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/color_code_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/app_bg_color"
+        android:background="@color/app_color_2"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:menu="@menu/main_menu"
-        app:navigationIcon="?attr/actionModeCloseDrawable"
+        app:navigationIcon="?attr/homeAsUpIndicator"
         app:titleTextColor="@color/black" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/app_bg_color"
+        android:background="@color/app_color_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/color_code_toolbar">
@@ -142,7 +142,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/card_view_bg"
+        android:background="@drawable/textview_btn_bgd"
         android:elevation="@dimen/elevation"
         android:paddingStart="@dimen/text_view_start"
         android:paddingTop="@dimen/text_view_top"
@@ -169,7 +169,7 @@
         android:paddingEnd="64dp"
         android:paddingBottom="4dp"
         android:text="@string/calculate"
-        android:textColor="@color/black"
+        android:textColor="@color/app_color_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />

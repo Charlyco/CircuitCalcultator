@@ -7,9 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.limitless.circuitcalulator.R
 import com.limitless.circuitcalulator.databinding.FragmentTankCircutBinding
+import com.limitless.circuitcalulator.viewModels.TankCircuitViewModel
+import com.limitless.circuitcalulator.viewModels.TankCircuitViewModelFactory
 import kotlin.math.PI
 import kotlin.math.sqrt
 
@@ -18,6 +21,8 @@ class TankCircuitFragment : Fragment() {
         fun newInstance() =
             TankCircuitFragment()
     }
+    private lateinit var viewModel: TankCircuitViewModel
+    private lateinit var viewModelFactory: TankCircuitViewModelFactory
     private lateinit var rlcRadioGroup: RadioGroup
     private lateinit var frequencyBox: EditText
     private lateinit var capacitanceBox: EditText
@@ -38,7 +43,9 @@ class TankCircuitFragment : Fragment() {
         inductanceBox = binding.indEditText
         calButton = binding.rlcCalcButton
         result = binding.rlcResultTextView
-
+        val application = requireActivity().application
+        viewModelFactory = TankCircuitViewModelFactory(application)
+        viewModel = ViewModelProvider(this, viewModelFactory)[TankCircuitViewModel::class.java]
         rlcRadioGroup.setOnCheckedChangeListener { radioGroup,
                                                    i -> radioGroup.checkedRadioButtonId
             when (i) {
@@ -76,16 +83,7 @@ class TankCircuitFragment : Fragment() {
         }else {
             val frequency = frequencyBox.text.toString().toDouble()
             val capacitance = capacitanceBox.text.toString().toDouble()
-            val inductance = (sqrt((1 / (2 * PI * frequency))) / capacitance)
-
-            result.text = buildString {
-                append("Inductance = SquareRoot((1/2 * PI * ")
-                append(frequency)
-                append(") / ")
-                append(capacitance)
-                append(") \n\n")
-                append("Capacitance = ${"%.4f".format(inductance)}H")
-            }
+            result.text = viewModel.calcInductance(frequency, capacitance)
         }
     }
 
@@ -95,16 +93,7 @@ class TankCircuitFragment : Fragment() {
         }else {
             val inductance = inductanceBox.text.toString().toDouble()
             val frequency = frequencyBox.text.toString().toDouble()
-            val capacitance = (sqrt((1 / (2 * PI * frequency))) / inductance)
-
-            result.text = buildString {
-                append("Capacitance = SquareRoot((1/2 * PI * ")
-                append(frequency)
-                append(") / ")
-                append(inductance)
-                append(") \n\n")
-                append ("Capacitance = ${ "%.2f".format(capacitance * 1000000) }uF")
-            }
+            result.text = viewModel.calcCapacitance(frequency, inductance)
         }
     }
 
@@ -114,16 +103,7 @@ class TankCircuitFragment : Fragment() {
         } else {
             val capacitance = capacitanceBox.text.toString().toDouble()
             val inductance = inductanceBox.text.toString().toDouble()
-            val resonanceFreq = 1 / (2 * PI * (sqrt(capacitance * inductance)))
-
-            result.text = buildString {
-                append("Resonance Frequency = 1/ (2 * PI * SquareRoot(")
-                append(inductance)
-                append(" * ")
-                append(capacitance)
-                append("). \n\n")
-                append("Resonance Frequency = ${"%.1f".format(resonanceFreq)}Hz")
-            }
+            result.text = viewModel.calcFrequency(capacitance, inductance)
         }
     }
 

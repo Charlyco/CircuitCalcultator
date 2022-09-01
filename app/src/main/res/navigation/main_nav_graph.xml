@@ -65,7 +65,11 @@
         android:id="@+id/ohmsLawFragment"
         android:name="com.limitless.circuitcalulator.calculations.OhmsLawFragment"
         android:label="fragment_ohms_law"
-        tools:layout="@layout/fragment_ohms_law" />
+        tools:layout="@layout/fragment_ohms_law" >
+        <action
+            android:id="@+id/action_ohmsLawFragment_to_mainScreenFragment"
+            app:destination="@id/mainScreenFragment" />
+    </fragment>
     <fragment
         android:id="@+id/resistorArrangeFragment"
         android:name="com.limitless.circuitcalulator.calculations.ResistorArrangeFragment"

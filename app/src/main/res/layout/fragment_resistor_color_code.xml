@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:background="@color/app_color_2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/color_code_toolbar">
 
@@ -34,10 +35,10 @@
             android:id="@+id/textView2"
             android:layout_width="213dp"
             android:layout_height="16dp"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/select_colours"
             android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -148,6 +149,7 @@
         android:paddingTop="@dimen/text_view_top"
         android:paddingEnd="@dimen/text_view_end"
         android:paddingBottom="@dimen/text_view_bottom"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

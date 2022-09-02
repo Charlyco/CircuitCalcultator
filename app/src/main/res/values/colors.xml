@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="app_bg_color">#B580F2</color>
+    <color name="app_bg_color">#FDFDFD</color>
     <color name="app_bg_color_var">#497CE3</color>
     <color name="app_blue">#0327DA</color>
     <color name="app_color_5">#3A80F7</color>

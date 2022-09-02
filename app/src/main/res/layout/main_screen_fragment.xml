@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/app_color_2"
+    android:background="@color/white"
     tools:context=".MainScreenFragment">
 
     <androidx.appcompat.widget.Toolbar
@@ -36,7 +36,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white"
+            android:background="@color/app_color_2"
             android:paddingBottom="@dimen/card_view_pad_bottom">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -71,6 +71,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/tank_circuit"
                         android:textAlignment="center"
+                        android:textColor="@color/black"
                         android:textSize="11sp" />
                 </LinearLayout>
 
@@ -101,6 +102,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/transformer_param"
                         android:textAlignment="center"
+                        android:textColor="@color/black"
                         android:textSize="11sp" />
                 </LinearLayout>
 
@@ -132,6 +134,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/ohms_law_btn"
                         android:textAlignment="center"
+                        android:textColor="@color/black"
                         android:textSize="11sp" />
                 </LinearLayout>
 
@@ -163,6 +166,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/color_code_btn"
                         android:textAlignment="center"
+                        android:textColor="@color/black"
                         android:textSize="11sp" />
                 </LinearLayout>
 
@@ -195,6 +199,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/resistor_arrangement"
                         android:textAlignment="center"
+                        android:textColor="@color/black"
                         android:textSize="11sp" />
                 </LinearLayout>
 
@@ -224,6 +229,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/network_theorems"
                         android:textAlignment="center"
+                        android:textColor="@color/black"
                         android:textSize="11sp" />
                 </LinearLayout>
 

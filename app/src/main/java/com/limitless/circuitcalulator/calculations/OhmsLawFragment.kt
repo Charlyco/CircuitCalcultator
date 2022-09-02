@@ -1,6 +1,7 @@
 package com.limitless.circuitcalulator.calculations
 
 import android.os.Bundle
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,10 +30,10 @@ class OhmsLawFragment : Fragment() {
     private lateinit var binding: FragmentOhmsLawBinding
     private lateinit var circleMenuView: CircleMenuView
     private lateinit var toolbar: Toolbar
-    private lateinit var voltage: EditText
-    private lateinit var current: EditText
-    private lateinit var resistance: EditText
-    private lateinit var power: EditText
+    private lateinit var firstInputBox: EditText
+    private lateinit var secondInputBox: EditText
+    //private lateinit var resistance: EditText
+    //private lateinit var power: EditText
     private lateinit var calcButton: Button
     private var circleMenuIndex: Int? = null
     private lateinit var resultBox: TextView
@@ -46,10 +47,8 @@ class OhmsLawFragment : Fragment() {
         viewModelFactory = OhmsLawViewModelFactory(application)
         viewModel = ViewModelProvider(this, viewModelFactory)[OhmsLawViewModel::class.java]
         circleMenuView = binding.ohmCircleMenu
-        voltage = binding.voltageBox
-        current = binding.currentBox
-        resistance = binding.resistanceBox
-        power = binding.powerBox
+        firstInputBox = binding.ohmInputBox1
+        secondInputBox = binding.ohmInputBox2
         resultBox = binding.ohmsLawResult
         calcButton = binding.ohmaCalcButton
         calcButton.setOnClickListener { calculateAndShowResult(circleMenuIndex) }
@@ -70,99 +69,99 @@ class OhmsLawFragment : Fragment() {
 
     private fun calculateAndShowResult(circleMenuIndex: Int?) {
         when (circleMenuIndex) {
-            0 -> if (power.text.isEmpty() || resistance.text.isEmpty()) {
+            0 -> if (firstInputBox.text.isEmpty() || secondInputBox.text.isEmpty()) {
                 Toast.makeText(activity, "Input all necessary data", Toast.LENGTH_LONG).show()
             }else {
-                val p = power.text.toString().toDouble()
-                val r = resistance.text.toString().toDouble()
+                val p = firstInputBox.text.toString().toDouble()
+                val r = secondInputBox.text.toString().toDouble()
                 resultBox.text = viewModel.calcVoltageWithPandR(p, r)
             }
 
-            1 -> if (power.text.isEmpty() || current.text.isEmpty()) {
+            1 -> if (firstInputBox.text.isEmpty() || secondInputBox.text.isEmpty()) {
                 Toast.makeText(activity, "Input all necessary data", Toast.LENGTH_LONG).show()
             }else {
-                val p = power.text.toString().toDouble()
-                val i = current.text.toString().toDouble()
+                val p = firstInputBox.text.toString().toDouble()
+                val i = secondInputBox.text.toString().toDouble()
                 resultBox.text = viewModel.calcVoltageWithPandI(p, i)
             }
 
-            2 -> if (current.text.isEmpty() || resistance.text.isEmpty()) {
+            2 -> if (firstInputBox.text.isEmpty() || secondInputBox.text.isEmpty()) {
                 Toast.makeText(activity, "Input all necessary data", Toast.LENGTH_LONG).show()
             }else {
-                val i = current.text.toString().toDouble()
-                val r = resistance.text.toString().toDouble()
+                val i = firstInputBox.text.toString().toDouble()
+                val r = secondInputBox.text.toString().toDouble()
                 resultBox.text = viewModel.calcVoltageWithIandR(i, r)
             }
 
-            3 -> if (voltage.text.isEmpty() || current.text.isEmpty()) {
+            3 -> if (firstInputBox.text.isEmpty() || secondInputBox.text.isEmpty()) {
                 Toast.makeText(activity, "Input all necessary data", Toast.LENGTH_LONG).show()
             }else {
-                val v = voltage.text.toString().toDouble()
-                val i = current.text.toString().toDouble()
+                val v = firstInputBox.text.toString().toDouble()
+                val i = secondInputBox.text.toString().toDouble()
                 resultBox.text = viewModel.calcResistanceWithVandI(v, i)
             }
 
-            4 -> if (voltage.text.isEmpty() || power.text.isEmpty()) {
+            4 -> if (firstInputBox.text.isEmpty() || secondInputBox.text.isEmpty()) {
                 Toast.makeText(activity, "Input all necessary data", Toast.LENGTH_LONG).show()
             }else {
-                val v = voltage.text.toString().toDouble()
-                val p = power.text.toString().toDouble()
+                val v = firstInputBox.text.toString().toDouble()
+                val p = secondInputBox.text.toString().toDouble()
                 resultBox.text = viewModel.calcResistanceWithVandP(v, p)
             }
 
-            5 -> if (current.text.isEmpty() || power.text.isEmpty()) {
+            5 -> if (firstInputBox.text.isEmpty() || secondInputBox.text.isEmpty()) {
                 Toast.makeText(activity, "Input all necessary data", Toast.LENGTH_LONG).show()
             }else {
-                val i = current.text.toString().toDouble()
-                val p = power.text.toString().toDouble()
+                val i = firstInputBox.text.toString().toDouble()
+                val p = secondInputBox.text.toString().toDouble()
                 resultBox.text = viewModel.calcResistanceWithIandP(i, p)
             }
 
-            6 -> if (voltage.text.isEmpty() || resistance.text.isEmpty()) {
+            6 -> if (firstInputBox.text.isEmpty() || secondInputBox.text.isEmpty()) {
                 Toast.makeText(activity, "Input all necessary data", Toast.LENGTH_LONG).show()
             }else {
-                val v = voltage.text.toString().toDouble()
-                val r = resistance.text.toString().toDouble()
+                val v = firstInputBox.text.toString().toDouble()
+                val r = secondInputBox.text.toString().toDouble()
                 resultBox.text = viewModel.calcPowerWithVandR(v, r)
             }
 
-            7 -> if (resistance.text.isEmpty() || current.text.isEmpty()) {
+            7 -> if (firstInputBox.text.isEmpty() || secondInputBox.text.isEmpty()) {
                 Toast.makeText(activity, "Input all necessary data", Toast.LENGTH_LONG).show()
             }else {
-                val r = resistance.text.toString().toDouble()
-                val i = current.text.toString().toDouble()
+                val r = firstInputBox.text.toString().toDouble()
+                val i = secondInputBox.text.toString().toDouble()
                 resultBox.text = viewModel.calcPowerWithRandI(r, i)
             }
 
-            8 -> if (current.text.isEmpty() || voltage.text.isEmpty()) {
+            8 -> if (firstInputBox.text.isEmpty() || secondInputBox.text.isEmpty()) {
                 Toast.makeText(activity, "Input all necessary data", Toast.LENGTH_LONG).show()
             }else {
-                val i = current.text.toString().toDouble()
-                val v = voltage.text.toString().toDouble()
+                val i = firstInputBox.text.toString().toDouble()
+                val v = secondInputBox.text.toString().toDouble()
                 resultBox.text = viewModel.calcPowerWithIandV(i, v)
             }
 
-            9 -> if (resistance.text.isEmpty() || voltage.text.isEmpty()) {
+            9 -> if (firstInputBox.text.isEmpty() || secondInputBox.text.isEmpty()) {
                 Toast.makeText(activity, "Input all necessary data", Toast.LENGTH_LONG).show()
             }else {
-                val r = resistance.text.toString().toDouble()
-                val v = voltage.text.toString().toDouble()
+                val r = firstInputBox.text.toString().toDouble()
+                val v = secondInputBox.text.toString().toDouble()
                 resultBox.text = viewModel.calcCurrentWithRandV(r, v)
             }
 
-            10 -> if (power.text.isEmpty() || voltage.text.isEmpty()) {
+            10 -> if (firstInputBox.text.isEmpty() || secondInputBox.text.isEmpty()) {
                 Toast.makeText(activity, "Input all necessary data", Toast.LENGTH_LONG).show()
             }else {
-                val p = power.text.toString().toDouble()
-                val v = voltage.text.toString().toDouble()
+                val p = firstInputBox.text.toString().toDouble()
+                val v = secondInputBox.text.toString().toDouble()
                 resultBox.text = viewModel.calcCurrentWithPandV(p, v)
             }
 
-            11 -> if (resistance.text.isEmpty() || power.text.isEmpty() ) {
+            11 -> if (firstInputBox.text.isEmpty() || secondInputBox.text.isEmpty() ) {
                 Toast.makeText(activity, "Input all necessary data", Toast.LENGTH_LONG).show()
             }else {
-                val r = resistance.text.toString().toDouble()
-                val p = power.text.toString().toDouble()
+                val r = firstInputBox.text.toString().toDouble()
+                val p = secondInputBox.text.toString().toDouble()
                 resultBox.text = viewModel.calcCurrentWithRandP(r, p)
             }
         }
@@ -187,110 +186,86 @@ class OhmsLawFragment : Fragment() {
 
     private fun showRandP(index: Int) {
         circleMenuIndex = index
-        power.visibility = View.VISIBLE
-        voltage.visibility = View.VISIBLE
+        firstInputBox.hint = getString(R.string.resistance)
+        secondInputBox.hint = getString(R.string.power)
         calcButton.visibility = View.VISIBLE
-        resistance.visibility = View.GONE
-        current.visibility = View.GONE
     }
 
     private fun showPandV(index: Int) {
         circleMenuIndex = index
-        power.visibility = View.VISIBLE
-        voltage.visibility = View.VISIBLE
+        firstInputBox.hint = getString(R.string.power)
+        secondInputBox.hint = getString(R.string.voltage)
         calcButton.visibility = View.VISIBLE
-        current.visibility = View.GONE
-        resistance.visibility = View.GONE
     }
 
     private fun showRandV(index: Int) {
         circleMenuIndex = index
-        resistance.visibility = View.VISIBLE
-        voltage.visibility = View.VISIBLE
+        firstInputBox.hint = getString(R.string.resistance)
+        secondInputBox.hint = getString(R.string.voltage)
         calcButton.visibility = View.VISIBLE
-        current.visibility = View.GONE
-        power.visibility = View.GONE
     }
 
     private fun showIandV(index: Int) {
         circleMenuIndex = index
-        current.visibility = View.VISIBLE
-        voltage.visibility = View.VISIBLE
+        firstInputBox.hint = getString(R.string.current)
+        secondInputBox.hint = getString(R.string.voltage)
         calcButton.visibility = View.VISIBLE
-        power.visibility = View.GONE
-        resistance.visibility = View.GONE
     }
 
     private fun showRandI(index: Int) {
         circleMenuIndex = index
-        resistance.visibility = View.VISIBLE
-        current.visibility = View.VISIBLE
+        firstInputBox.hint = getString(R.string.resistance)
+        secondInputBox.hint = getString(R.string.current)
         calcButton.visibility = View.VISIBLE
-        voltage.visibility = View.GONE
-        power.visibility = View.GONE
     }
 
     private fun showVandR(index: Int) {
         circleMenuIndex = index
-        voltage.visibility = View.VISIBLE
-        resistance.visibility = View.VISIBLE
+        firstInputBox.hint = getString(R.string.voltage)
+        secondInputBox.hint = getString(R.string.resistance)
         calcButton.visibility = View.VISIBLE
-        power.visibility = View.GONE
-        current.visibility = View.GONE
     }
 
     private fun showIandP(index: Int) {
         circleMenuIndex = index
-        current.visibility = View.VISIBLE
-        power.visibility = View.VISIBLE
+        firstInputBox.hint = getString(R.string.current)
+        secondInputBox.hint = getString(R.string.power)
         calcButton.visibility = View.VISIBLE
-        resistance.visibility = View.GONE
-        voltage.visibility = View.GONE
     }
 
     private fun showVandP(index: Int) {
         circleMenuIndex = index
-        voltage.visibility = View.VISIBLE
-        power.visibility = View.VISIBLE
+        firstInputBox.hint = getString(R.string.voltage)
+        secondInputBox.hint = getString(R.string.power)
         calcButton.visibility = View.VISIBLE
-        current.visibility = View.GONE
-        resistance.visibility = View.GONE
     }
 
     private fun showVandI(index: Int) {
         circleMenuIndex = index
-        voltage.visibility = View.VISIBLE
-        current.visibility = View.VISIBLE
+        firstInputBox.hint = getString(R.string.voltage)
+        secondInputBox.hint = getString(R.string.current)
         calcButton.visibility = View.VISIBLE
-        power.visibility = View.GONE
-        resistance.visibility = View.GONE
     }
 
     private fun showIandR(index: Int) {
         circleMenuIndex = index
-        current.visibility = View.VISIBLE
-        resistance.visibility = View.VISIBLE
+        firstInputBox.hint = getString(R.string.current)
+        secondInputBox.hint = getString(R.string.resistance)
         calcButton.visibility = View.VISIBLE
-        voltage.visibility = View.GONE
-        power.visibility = View.GONE
     }
 
     private fun showPandI(index: Int) {
         circleMenuIndex = index
-        power.visibility = View.VISIBLE
-        current.visibility = View.VISIBLE
+        firstInputBox.hint = getString(R.string.power)
+        secondInputBox.hint = getString(R.string.current)
         calcButton.visibility = View.VISIBLE
-        resistance.visibility = View.GONE
-        voltage.visibility = View.GONE
     }
 
     private fun showPandR(index: Int) {
         circleMenuIndex = index
-        power.visibility = View.VISIBLE
-        resistance.visibility = View.VISIBLE
+        firstInputBox.hint = getString(R.string.power)
+        secondInputBox.hint = getString(R.string.resistance)
         calcButton.visibility = View.VISIBLE
-        current.visibility = View.GONE
-        voltage.visibility = View.GONE
     }
 
 }

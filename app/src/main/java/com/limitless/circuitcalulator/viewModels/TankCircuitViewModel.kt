@@ -15,7 +15,7 @@ class TankCircuitViewModel (private val application: Application): ViewModel() {
             append(") / ")
             append(capacitance)
             append(") \n\n")
-            append("Capacitance = ${"%.4f".format(inductance)}H")
+            append("Inductance = ${"%.2f".format(inductance)}H")
         }
         return result
     }

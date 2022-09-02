@@ -17,19 +17,29 @@
             app:destination="@id/tankCircuitFragment" />
         <action
             android:id="@+id/action_mainScreenFragment_to_transformerFragment"
-            app:destination="@id/transformerFragment" />
+            app:destination="@id/transformerFragment"
+            app:enterAnim="@android:anim/slide_out_right"
+            app:exitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_mainScreenFragment_to_ohmsLawFragment"
-            app:destination="@id/ohmsLawFragment" />
+            app:destination="@id/ohmsLawFragment"
+            app:enterAnim="@android:anim/slide_out_right"
+            app:exitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_mainScreenFragment_to_resistorArrangeFragment"
-            app:destination="@id/resistorArrangeFragment" />
+            app:destination="@id/resistorArrangeFragment"
+            app:enterAnim="@android:anim/slide_out_right"
+            app:exitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_mainScreenFragment_to_resistorColorCodeFragment"
-            app:destination="@id/resistorColorCodeFragment" />
+            app:destination="@id/resistorColorCodeFragment"
+            app:enterAnim="@android:anim/slide_out_right"
+            app:exitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_mainScreenFragment_to_networkTheoremesFragment"
-            app:destination="@id/networkTheoremesFragment" />
+            app:destination="@id/networkTheoremesFragment"
+            app:enterAnim="@android:anim/slide_out_right"
+            app:exitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
@@ -50,7 +60,11 @@
         android:label="TankCircuitFragment" >
         <action
             android:id="@+id/action_tankCircuitFragment_to_mainScreenFragment"
-            app:destination="@id/mainScreenFragment" />
+            app:destination="@id/mainScreenFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/tankCircuitFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/transformerFragment"
@@ -59,7 +73,11 @@
         tools:layout="@layout/fragment_transformer" >
         <action
             android:id="@+id/action_transformerFragment_to_mainScreenFragment"
-            app:destination="@id/mainScreenFragment" />
+            app:destination="@id/mainScreenFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/transformerFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/ohmsLawFragment"
@@ -68,7 +86,11 @@
         tools:layout="@layout/fragment_ohms_law" >
         <action
             android:id="@+id/action_ohmsLawFragment_to_mainScreenFragment"
-            app:destination="@id/mainScreenFragment" />
+            app:destination="@id/mainScreenFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/ohmsLawFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/resistorArrangeFragment"
@@ -82,7 +104,10 @@
         tools:layout="@layout/fragment_resistor_color_code" >
         <action
             android:id="@+id/action_resistorColorCodeFragment_to_mainScreenFragment"
-            app:destination="@id/mainScreenFragment" />
+            app:destination="@id/mainScreenFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:popUpTo="@id/resistorColorCodeFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/networkTheoremesFragment"

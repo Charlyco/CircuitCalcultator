@@ -29,24 +29,24 @@
         <item>@color/white</item>
         <item>@color/white</item>
         <item>@color/white</item>
-        <item>@color/app_bg_color_var</item>
-        <item>@color/app_bg_color_var</item>
-        <item>@color/app_bg_color_var</item>
-        <item>@color/app_bg_color_var</item>
+        <item>@color/white</item>
+        <item>@color/white</item>
+        <item>@color/white</item>
+        <item>@color/white</item>
     </array>
 
     <array name="circleMenuIcons">
-        <item>@drawable/ohms_law</item>
-        <item>@drawable/ohms_law</item>
-        <item>@drawable/ohms_law</item>
-        <item>@drawable/ohms_law</item>
-        <item>@drawable/ohms_law</item>
-        <item>@drawable/ohms_law</item>
-        <item>@drawable/ohms_law</item>
-        <item>@drawable/ohms_law</item>
-        <item>@drawable/ohms_law</item>
-        <item>@drawable/ohms_law</item>
-        <item>@drawable/ohms_law</item>
-        <item>@drawable/ohms_law</item>
+        <item>@drawable/icon_1</item>
+        <item>@drawable/icon_2</item>
+        <item>@drawable/icon_3</item>
+        <item>@drawable/icon_4</item>
+        <item>@drawable/icon_5</item>
+        <item>@drawable/icon_6</item>
+        <item>@drawable/icon_7</item>
+        <item>@drawable/icon_8</item>
+        <item>@drawable/icon_9</item>
+        <item>@drawable/icon_10</item>
+        <item>@drawable/icon_11</item>
+        <item>@drawable/icon_12</item>
     </array>
 </resources>

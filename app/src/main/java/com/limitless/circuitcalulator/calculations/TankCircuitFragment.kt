@@ -1,5 +1,7 @@
 package com.limitless.circuitcalulator.calculations
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,8 +11,12 @@ import android.widget.*
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import com.limitless.circuitcalulator.R
 import com.limitless.circuitcalulator.databinding.FragmentTankCircutBinding
+import com.limitless.circuitcalulator.utilities.Utils
 import com.limitless.circuitcalulator.viewModels.TankCircuitViewModel
 import com.limitless.circuitcalulator.viewModels.TankCircuitViewModelFactory
 import kotlin.math.PI
@@ -21,6 +27,7 @@ class TankCircuitFragment : Fragment() {
         fun newInstance() =
             TankCircuitFragment()
     }
+
     private lateinit var viewModel: TankCircuitViewModel
     private lateinit var viewModelFactory: TankCircuitViewModelFactory
     private lateinit var rlcRadioGroup: RadioGroup
@@ -30,7 +37,9 @@ class TankCircuitFragment : Fragment() {
     private lateinit var result: TextView
     private lateinit var calButton: Button
     private lateinit var binding: FragmentTankCircutBinding
-    private lateinit var toolbar:Toolbar
+    private lateinit var toolbar: Toolbar
+    private lateinit var adView: AdView
+    private val utils:Utils = Utils()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,7 +56,8 @@ class TankCircuitFragment : Fragment() {
         viewModelFactory = TankCircuitViewModelFactory(application)
         viewModel = ViewModelProvider(this, viewModelFactory)[TankCircuitViewModel::class.java]
         rlcRadioGroup.setOnCheckedChangeListener { radioGroup,
-                                                   i -> radioGroup.checkedRadioButtonId
+                                                   i ->
+            radioGroup.checkedRadioButtonId
             when (i) {
                 R.id.frequencyBtn -> hideFrequency()
 
@@ -60,10 +70,26 @@ class TankCircuitFragment : Fragment() {
 
         toolbar = binding.tankCctToolbar
         toolbar.title = getString(R.string.tank_circuit)
+        toolbar.inflateMenu(R.menu.main_menu)
+        toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.feedback -> {
+                    utils.sendFeedback(requireActivity())
+                    true
+                }
+                else -> false
+            }
+        }
         toolbar.setNavigationOnClickListener {
             findNavController().navigate(
-                R.id.action_tankCircuitFragment_to_mainScreenFragment)}
+                R.id.action_tankCircuitFragment_to_mainScreenFragment
+            )
+        }
 
+        adView = binding.adViewRlc
+        MobileAds.initialize(requireActivity()) {}
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
         return binding.root
     }
 

@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="app_bg_color">#FDFDFD</color>
-    <color name="app_bg_color_var">#497CE3</color>
-    <color name="app_blue">#0327DA</color>
-    <color name="app_color_5">#3A80F7</color>
+    <color name="app_bg_color">#F0F3F8</color>
+    <color name="app_bg_color_var">#8FB2F8</color>
+    <color name="app_blue">#FC0528D5</color>
+    <color name="app_blue_light">#C0D9ED</color>
+    <color name="app_color_5">#079A3B</color>
+    <color name="app_color_5_light">#C2F1D3</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="app_color_2">#497CE3</color>
-    <color name="app_color_3">#E7C095</color>
-    <color name="app_color_4">#1A87FA</color>
+    <color name="app_color_2">#2E6AB2</color>
+    <color name="app_color_3">#FF6400</color>
+    <color name="app_color_3_light">#FBDBC6</color>
+    <color name="app_color_4">#5F0685</color>
+    <color name="app_color_4_light">#E7DAED</color>
+    <color name="app_red">#F70000</color>
+    <color name="hint_text">#263238</color>
+    <color name="transparent">#00F0F3F8</color>
+    <color name="semi_transparent">#00FF6400</color>
 </resources>

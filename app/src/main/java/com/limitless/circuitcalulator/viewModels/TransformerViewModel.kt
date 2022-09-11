@@ -7,38 +7,39 @@ import androidx.lifecycle.ViewModelProvider
 class TransformerViewModel(private val application: Application): ViewModel() {
 
     fun calcStarParam(a: Double, b: Double, c: Double): String {
-        val ab: Double = (a * b) / (a + b + c)
-        val bc: Double = (b * c) / (a + b + c)
-        val ac: Double = (a * c) / (a + b + c)
+        val Ra: Double = (a * b) / (a + b + c)
+        val Rb: Double = (b * c) / (a + b + c)
+        val Rc: Double = (a * c) / (a + b + c)
         val result  = buildString {
             append("The Resulting Delta Connection:\n\n")
-            append("AB = (a * b) / (a + b+ c) = ")
-            append("%.2f".format(ab))
+            append("Ra = (Rab * Rac) / (Rab + Rac+ Rbc) = ")
+            append("%.2f".format(Ra))
             append(" Ohms\n\n")
-            append("BC = (b * c) / (a + b+ c) = ")
-            append("%.2f".format(bc))
+            append("Rb = (Rab * Rbc) / (Rab + Rac+ Rbc) = ")
+            append("%.2f".format(Rb))
             append(" Ohms\n\n")
-            append("AC = (a * c) / (a + b+ c) = ")
-            append("%.2f".format(ac))
+            append("Rc = (Rac * Rbc) / (Rab + Rac+ Rbc) = ")
+            append("%.2f".format(Rc))
             append(" Ohms\n\n")
         }
         return result
     }
 
     fun calcDeltaParam(a: Double, b: Double, c: Double): String {
-        val A = a + b + ((a * b)/c)
-        val B = b + c + ((b * c)/a)
-        val C = a + c + ((a * c)/b)
+        val Rac = a + b + ((a * b)/c)
+        val Rab = b + c + ((b * c)/a)
+        val Rbc = a + c + ((a * c)/b)
         val result = buildString {
+
             append("The Resulting Star Connection:\n\n")
-            append("A = a + b + ((a * b)/c) = ")
-            append("%.2f".format(A))
+            append("Rac = a + b + ((a * b)/c) = ")
+            append("%.2f".format(Rac))
             append(" Ohms\n\n")
-            append("B = b + c + ((b * c)/a) = ")
-            append("%.2f".format(B))
+            append("Rab = b + c + ((b * c)/a) = ")
+            append("%.2f".format(Rab))
             append(" Ohms\n\n")
-            append("C = a + c + ((a * c)/b) = ")
-            append("%.2f".format(C))
+            append("Rbc = a + c + ((a * c)/b) = ")
+            append("%.2f".format(Rbc))
             append(" Ohms\n\n")
         }
         return result

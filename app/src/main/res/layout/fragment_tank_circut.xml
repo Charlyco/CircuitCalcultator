@@ -1,177 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".calculations.OhmsLawFragment">
+    android:background="@drawable/color_code_bg"
+    tools:context=".calculations.TankCircuitFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/tank_description"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tankCctToolbar" />
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/tankCctToolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/app_color_2"
-        tools:context=".calculations.TankCircuitFragment">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/transparent"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        app:navigationIconTint="@color/black"
+        app:titleTextColor="@color/black" />
 
+    <EditText
+        android:id="@+id/freqEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/edit_text_bg"
+        android:elevation="@dimen/elevation"
+        android:ems="10"
+        android:hint="@string/frequency"
+        android:inputType="number|numberDecimal"
+        android:minHeight="48dp"
+        android:paddingStart="@dimen/start"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rlcRadioGroup" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/tank_description"
-            android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tankCctToolbar" />
+    <EditText
+        android:id="@+id/capEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/edit_text_bg"
+        android:elevation="@dimen/elevation"
+        android:ems="10"
+        android:hint="@string/capacitance"
+        android:inputType="number|numberDecimal"
+        android:minHeight="48dp"
+        android:paddingStart="@dimen/start"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/freqEditText" />
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/tankCctToolbar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@color/app_color_2"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:menu="@menu/main_menu"
-            app:navigationIcon="?attr/homeAsUpIndicator"
-            app:titleTextColor="@color/black" />
+    <EditText
+        android:id="@+id/indEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/edit_text_bg"
+        android:elevation="@dimen/elevation"
+        android:ems="10"
+        android:hint="@string/inductance"
+        android:inputType="number|numberDecimal"
+        android:minHeight="48dp"
+        android:paddingStart="@dimen/start"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/capEditText" />
 
-        <EditText
-            android:id="@+id/freqEditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/textview_btn_bgd"
-            android:elevation="@dimen/elevation"
-            android:ems="10"
-            android:hint="@string/frequency"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:paddingStart="@dimen/start"
+    <Button
+        android:id="@+id/rlcCalcButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/button_bg_solid"
+        android:elevation="@dimen/elevation"
+        android:paddingStart="64dp"
+        android:paddingTop="4dp"
+        android:paddingEnd="64dp"
+        android:paddingBottom="4dp"
+        android:text="@string/calculate"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/indEditText"
+        tools:visibility="visible" />
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adViewRlc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="4dp"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/rlcResultTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/textview_btn_bgd"
+        android:elevation="@dimen/elevation"
+        android:foregroundTintMode="add"
+        android:paddingStart="@dimen/start"
+        android:paddingTop="@dimen/top"
+        android:paddingEnd="@dimen/end"
+        android:paddingBottom="@dimen/bottom"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/adViewRlc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rlcCalcButton" />
+
+    <RadioGroup
+        android:id="@+id/rlcRadioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:elevation="@dimen/elevation"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <RadioButton
+            android:id="@+id/frequencyBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Frequency"
             android:textColor="@color/black"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rlcRadioGroup" />
+            android:textSize="12sp" />
 
-        <EditText
-            android:id="@+id/capEditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/textview_btn_bgd"
-            android:elevation="@dimen/elevation"
-            android:ems="10"
-            android:hint="@string/capacitance"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:paddingStart="@dimen/start"
+        <RadioButton
+            android:id="@+id/capacitanceBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Capacitance"
             android:textColor="@color/black"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/freqEditText" />
+            android:textSize="12sp" />
 
-        <EditText
-            android:id="@+id/indEditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/textview_btn_bgd"
-            android:elevation="@dimen/elevation"
-            android:ems="10"
-            android:hint="@string/inductance"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:paddingStart="@dimen/start"
+        <RadioButton
+            android:id="@+id/inductnaceBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Inductance"
             android:textColor="@color/black"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/capEditText" />
+            android:textSize="12sp" />
+    </RadioGroup>
 
-        <Button
-            android:id="@+id/rlcCalcButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/button_bg"
-            android:elevation="@dimen/elevation"
-            android:paddingStart="64dp"
-            android:paddingTop="4dp"
-            android:paddingEnd="64dp"
-            android:paddingBottom="4dp"
-            android:text="@string/calculate"
-            android:textColor="@color/app_color_4"
-            android:textSize="12sp"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/indEditText"
-            tools:visibility="visible" />
-
-        <TextView
-            android:id="@+id/rlcResultTextView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/textview_btn_bgd"
-            android:elevation="@dimen/elevation"
-            android:foregroundTintMode="add"
-            android:paddingStart="@dimen/start"
-            android:paddingTop="@dimen/top"
-            android:paddingEnd="@dimen/end"
-            android:paddingBottom="@dimen/bottom"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rlcCalcButton" />
-
-        <RadioGroup
-            android:id="@+id/rlcRadioGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:elevation="@dimen/elevation"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView">
-
-            <RadioButton
-                android:id="@+id/frequencyBtn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Frequency"
-                android:textColor="@color/white"
-                android:textSize="12sp" />
-
-            <RadioButton
-                android:id="@+id/capacitanceBtn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Capacitance"
-                android:textColor="@color/white"
-                android:textSize="12sp" />
-
-            <RadioButton
-                android:id="@+id/inductnaceBtn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Inductance"
-                android:textColor="@color/white"
-                android:textSize="12sp" />
-        </RadioGroup>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

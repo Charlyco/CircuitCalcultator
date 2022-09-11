@@ -1,16 +1,18 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.CircuitCalulator" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <style name="Theme.CircuitCalulator" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/app_bg_color</item>
-        <item name="colorPrimaryVariant">@color/app_color_2</item>
+        <item name="colorPrimaryVariant">@color/app_color_3_light</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/app_blue</item>
-        <item name="colorSecondaryVariant">@color/app_color_2</item>
-        <item name="colorOnSecondary">@color/app_color_3</item>
+        <item name="colorSecondaryVariant">@color/app_bg_color</item>
+        <item name="colorOnSecondary">@color/app_color_3_light</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">@color/app_color_3</item>
         <!-- Customize your theme here. -->
+        <item name="hintTextColor">@color/hint_text</item>
+
     </style>
 </resources>

@@ -8,7 +8,7 @@ import kotlin.math.sqrt
 
 class TankCircuitViewModel (private val application: Application): ViewModel() {
     fun calcInductance(frequency: Double, capacitance: Double): String {
-        val inductance = (sqrt((1 / (2 * PI * frequency))) / capacitance)
+        val inductance = (sqrt((1 / (2 * PI * frequency))) / (capacitance / 1000000))
         val result = buildString {
             append("Inductance = SquareRoot((1/2 * PI * ")
             append(frequency)
@@ -35,7 +35,7 @@ class TankCircuitViewModel (private val application: Application): ViewModel() {
     }
 
     fun calcFrequency(capacitance: Double, inductance: Double): String {
-        val resonanceFreq = 1 / (2 * PI * (sqrt(capacitance * inductance)))
+        val resonanceFreq = 1 / (2 * PI * (sqrt((capacitance / 1000000) * inductance)))
 
         val result = buildString {
             append("Resonance Frequency = 1/ (2 * PI * SquareRoot(")

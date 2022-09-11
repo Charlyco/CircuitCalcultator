@@ -11,8 +11,8 @@ android {
         applicationId "com.limitless.circuitcalulator"
         minSdk 23
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        versionCode 4
+        versionName "1.1.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -38,10 +38,12 @@ android {
 }
 
 dependencies {
-    def nav_version = "2.5.1"
+    def nav_version = "2.5.2"
+    def lottieVersion = "5.2.0"
 
-    implementation 'androidx.core:core-ktx:1.8.0'
-    implementation 'androidx.appcompat:appcompat:1.5.0'
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.activity:activity-ktx:1.5.1'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
@@ -58,6 +60,9 @@ dependencies {
     androidTestImplementation("androidx.navigation:navigation-testing:$nav_version")
     implementation("androidx.navigation:navigation-compose:$nav_version")
 
-    //Ui
-    implementation 'com.ramotion.circlemenu:circle-menu:0.3.2'
+    //Admob
+    implementation 'com.google.android.gms:play-services-ads:21.1.0'
+
+    //Animation Library
+    implementation "com.airbnb.android:lottie:$lottieVersion"
 }

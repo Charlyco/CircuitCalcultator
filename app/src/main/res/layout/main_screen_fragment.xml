@@ -4,30 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/main_frag_bg"
     tools:context=".MainScreenFragment">
 
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/mainToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/app_color_2"
+        android:background="@color/transparent"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:logo="@android:drawable/ic_lock_idle_charging"
-        app:menu="@menu/main_menu"
+        app:title="@string/app_name"
         app:titleTextColor="@color/black" />
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
+        android:id="@+id/cardView2"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
-        app:cardCornerRadius="@dimen/card_corner_radius"
+        android:background="@drawable/card_view_bg"
         app:cardElevation="@dimen/card_view_elevation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,206 +36,216 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/app_color_2"
             android:paddingBottom="@dimen/card_view_pad_bottom">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/main_card_bg"
                 android:elevation="@dimen/card_view_elevation"
                 android:paddingBottom="@dimen/card_view_pad_bottom">
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/rlc_view_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="128dp"
+                    android:layout_height="128dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/white"
+                    android:layout_marginTop="32dp"
+                    android:background="@color/app_color_3_light"
                     android:focusable="true"
                     android:gravity="center"
                     android:orientation="vertical"
+                    app:layout_constraintEnd_toStartOf="@+id/star_delta_view_btn"
+                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <ImageButton
                         android:id="@+id/tankCircuit"
                         android:layout_width="64dp"
-                        android:layout_height="48dp"
+                        android:layout_height="64dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/app_color_3_light"
                         android:contentDescription="@string/tank_cct_button"
-                        android:src="@drawable/rlc_circuit" />
+                        android:src="@drawable/rlc"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/rlc_desc"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="8dp"
                         android:text="@string/tank_circuit"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="11sp" />
-                </LinearLayout>
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/app_color_3"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <LinearLayout
-                    android:id="@+id/xformer_view_btn"
-                    android:layout_width="64dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/white"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/star_delta_view_btn"
+                    android:layout_width="128dp"
+                    android:layout_height="128dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@color/app_color_4_light"
                     android:focusable="true"
                     android:gravity="center"
                     android:orientation="vertical"
-                    app:layout_constraintEnd_toStartOf="@+id/ohmsLaw_view_btn"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/rlc_view_btn"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <ImageButton
                         android:id="@+id/transformer_param_btn"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/app_color_4_light"
                         android:contentDescription="@string/transformer_param"
-                        android:src="@drawable/transformer"
-                        android:text="@string/transformer_param" />
+                        android:src="@drawable/stardelta"
+                        android:text="@string/transformer_param"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/xformer_desc"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/transformer_param"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="@string/star_delta_transform"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="11sp" />
-                </LinearLayout>
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/app_color_4"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/ohmsLaw_view_btn"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@color/white"
-                    android:focusable="true"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <ImageButton
-                        android:id="@+id/ohmsLaw"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:contentDescription="@string/ohms_law"
-                        android:src="@drawable/ohms_law"
-                        tools:layout_editor_absoluteX="16dp"
-                        tools:layout_editor_absoluteY="104dp" />
-
-                    <TextView
-                        android:id="@+id/ohms_law_desc"
-                        android:layout_width="64dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/ohms_law_btn"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="11sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/color_code_view_btn"
-                    android:layout_width="64dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@color/white"
-                    android:focusable="true"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ohmsLaw_view_btn">
-
-                    <ImageButton
-                        android:id="@+id/resistorColorCodes"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:contentDescription="@string/resistor_color_codes"
-                        android:src="@drawable/resistor"
-                        tools:layout_editor_absoluteX="331dp"
-                        tools:layout_editor_absoluteY="111dp" />
-
-                    <TextView
-                        android:id="@+id/color_code_desc"
-                        android:layout_width="64dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/color_code_btn"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="11sp" />
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:id="@+id/resistor_arng_view_btn"
-                    android:layout_width="64dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="128dp"
+                    android:layout_height="128dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="24dp"
-                    android:background="@color/white"
+                    android:layout_marginTop="32dp"
+                    android:background="@color/app_blue_light"
                     android:focusable="true"
                     android:gravity="center"
                     android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/color_code_view_btn"
+                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/rlc_view_btn">
 
                     <ImageButton
-                        android:id="@+id/equivalent_res_cap"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
+                        android:id="@+id/ohmsLaw"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/app_blue_light"
                         android:contentDescription="@string/ohms_law"
-                        android:src="@drawable/res_arrange"
-                        tools:layout_editor_absoluteX="16dp"
-                        tools:layout_editor_absoluteY="106dp" />
+                        android:src="@drawable/ohm_law"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/res_arng_code_desc"
-                        android:layout_width="64dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/resistor_arrangement"
+                        android:id="@+id/ohms_law_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="@string/ohms_law_btn"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="11sp" />
-                </LinearLayout>
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/app_blue"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <LinearLayout
-                    android:id="@+id/ntwk_theorems_view_btn"
-                    android:layout_width="64dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:background="@color/white"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/color_code_view_btn"
+                    android:layout_width="128dp"
+                    android:layout_height="128dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@color/app_color_5_light"
                     android:focusable="true"
                     android:gravity="center"
                     android:orientation="vertical"
-                    app:layout_constraintEnd_toStartOf="@+id/color_code_view_btn"
-                    app:layout_constraintStart_toEndOf="@+id/resistor_arng_view_btn"
-                    app:layout_constraintTop_toBottomOf="@+id/xformer_view_btn">
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/ohmsLaw_view_btn"
+                    app:layout_constraintTop_toBottomOf="@+id/star_delta_view_btn">
 
                     <ImageButton
-                        android:id="@+id/network_theorems"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
+                        android:id="@+id/resistorColorCodes"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/app_color_5_light"
                         android:contentDescription="@string/resistor_color_codes"
-                        android:src="@drawable/network_theorems" />
+                        android:src="@drawable/ohm_symbol"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/ntwk_theorems_desc"
-                        android:layout_width="64dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/network_theorems"
+                        android:id="@+id/color_code_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="@string/color_code_btn"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="11sp" />
-                </LinearLayout>
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/app_color_5"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 
     </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/charlyco_tech"
+        android:textColor="@color/app_red"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adViewMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        app:layout_constraintBottom_toTopOf="@+id/textView9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,32 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/color_code_bg"
     tools:context=".calculations.TransformerFragment">
 
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/xformerToolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/app_color_2"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/transparent"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/main_menu"
         app:navigationIcon="?attr/actionModeCloseDrawable"
-        app:title="@string/transformers"
+        app:navigationIconTint="@color/black"
+        app:title="@string/transformer_description"
         app:titleTextColor="@color/black" />
 
     <TextView
         android:id="@+id/textViewxformeer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="@string/tank_description"
         android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/xformerToolbar" />
 
@@ -40,7 +40,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:background="@drawable/textview_btn_bgd"
+        android:background="@drawable/edit_text_bg"
         android:elevation="@dimen/elevation"
         android:ems="10"
         android:hint="@string/box1"
@@ -53,10 +53,40 @@
         app:layout_constraintStart_toEndOf="@+id/xformerParam1"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view2"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/arrow_right" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view3"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/arrow_left" />
+
     <RadioGroup
         android:id="@+id/xFormerRadioGroup"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginTop="8dp"
         android:elevation="@dimen/elevation"
         android:orientation="horizontal"
@@ -67,26 +97,26 @@
         <RadioButton
             android:id="@+id/starToDeltaBtn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="@string/star_to_delta"
-            android:textColor="@color/black" />
+            android:textColor="@color/app_color_3" />
 
         <RadioButton
             android:id="@+id/deltaToStarBtn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="@string/delta_to_star"
-            android:textColor="@color/black" />
+            android:textColor="@color/app_color_4" />
 
     </RadioGroup>
 
     <Button
         android:id="@+id/xformerCalcButton"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/button_bg_solid"
         android:elevation="@dimen/elevation"
         android:paddingStart="64dp"
@@ -109,7 +139,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/textview_btn_bgd"
+        android:background="@drawable/edit_text_bg"
         android:elevation="@dimen/elevation"
         android:ems="10"
         android:hint="@string/box1"
@@ -129,7 +159,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="8dp"
-        android:background="@drawable/textview_btn_bgd"
+        android:background="@drawable/edit_text_bg"
         android:elevation="@dimen/elevation"
         android:ems="10"
         android:hint="@string/box1"
@@ -145,18 +175,18 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
         android:layout_weight="1"
-        android:contentDescription="@string/third_colour"
+        android:contentDescription="@strings/start"
         android:elevation="@dimen/elevation"
-        android:src="@drawable/delta_star"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/animation_view2"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/xFormerRadioGroup"
+        app:srcCompat="@drawable/star"
         tools:ignore="ImageContrastCheck" />
 
     <TextView
@@ -174,8 +204,36 @@
         android:paddingEnd="@dimen/end"
         android:paddingBottom="@dimen/bottom"
         android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/adViewTransformer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/xformerCalcButton"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/delta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/animation_view2"
+        app:layout_constraintTop_toBottomOf="@+id/xFormerRadioGroup" />
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adViewTransformer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="4dp"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3940256099942544/6300978111"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/xformerCalcButton" />
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

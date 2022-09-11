@@ -4,58 +4,223 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/color_code_bg"
     tools:context=".calculations.OhmsLawFragment">
 
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/ohmsLaTtoolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/app_color_2"
-        android:elevation="@dimen/elevation"
+        android:background="@color/transparent"
         android:minHeight="?attr/actionBarSize"
-        android:textColor="@color/app_color_3"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/main_menu"
         app:navigationIcon="?attr/homeAsUpIndicator"
-        app:title="@string/ohms_law" />
+        app:navigationIconTint="@color/black"
+        app:title="@string/ohms_law"
+        app:titleTextColor="@color/black" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="292dp"
-        android:layout_height="233dp"
-        android:src="@drawable/ohm"
-        app:layout_constraintBottom_toBottomOf="@+id/ohmCircleMenu"
-        app:layout_constraintEnd_toEndOf="@+id/ohmCircleMenu"
-        app:layout_constraintStart_toStartOf="@+id/ohmCircleMenu"
-        app:layout_constraintTop_toBottomOf="@+id/ohmsLaTtoolbar" />
-
-    <com.ramotion.circlemenu.CircleMenuView
-        android:id="@+id/ohmCircleMenu"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewOhm"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="@dimen/elevation"
-        app:barrierMargin="?attr/dialogCornerRadius"
-        app:button_colors="@array/circleMenuColors"
-        app:button_icons="@array/circleMenuIcons"
-        app:distance="@dimen/circle_menu_dist"
-        app:icon_color="@color/app_bg_color"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/image_btn_bgd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ohmsLaTtoolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/ohmsLaTtoolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ohms_bg"
+            android:elevation="@dimen/card_view_elevation">
+
+
+            <ImageButton
+                android:id="@+id/voltageButton1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/image_btn_bgd"
+                android:elevation="@dimen/elevation"
+                android:src="@drawable/icon_1"
+                app:layout_constraintEnd_toStartOf="@+id/voltageButton2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/voltageButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/image_btn_bgd"
+                android:elevation="@dimen/elevation"
+                android:src="@drawable/icon_2"
+                app:layout_constraintBottom_toBottomOf="@+id/voltageButton1"
+                app:layout_constraintEnd_toStartOf="@+id/voltageButton3"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toEndOf="@+id/voltageButton1"
+                app:layout_constraintTop_toTopOf="@+id/voltageButton1"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageButton
+                android:id="@+id/voltageButton3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/image_btn_bgd"
+                android:elevation="@dimen/elevation"
+                android:src="@drawable/icon_3"
+                app:layout_constraintBottom_toBottomOf="@+id/voltageButton2"
+                app:layout_constraintEnd_toStartOf="@+id/resistanceButton1"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/voltageButton2"
+                app:layout_constraintTop_toTopOf="@+id/voltageButton2"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageButton
+                android:id="@+id/resistanceButton1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/image_btn_bgd"
+                android:elevation="@dimen/elevation"
+                android:src="@drawable/icon_4"
+                app:layout_constraintBottom_toBottomOf="@+id/voltageButton3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/voltageButton3"
+                app:layout_constraintTop_toTopOf="@+id/voltageButton3"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageButton
+                android:id="@+id/resistanceButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/image_btn_bgd"
+                android:elevation="@dimen/elevation"
+                android:src="@drawable/icon_5"
+                app:layout_constraintEnd_toStartOf="@+id/resistanceButton3"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/voltageButton1" />
+
+            <ImageButton
+                android:id="@+id/resistanceButton3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/image_btn_bgd"
+                android:elevation="@dimen/elevation"
+                android:src="@drawable/icon_6"
+                app:layout_constraintBottom_toBottomOf="@+id/resistanceButton2"
+                app:layout_constraintEnd_toStartOf="@+id/powerButton1"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/resistanceButton2"
+                app:layout_constraintTop_toTopOf="@+id/resistanceButton2" />
+
+            <ImageButton
+                android:id="@+id/powerButton1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/image_btn_bgd"
+                android:elevation="@dimen/elevation"
+                android:src="@drawable/icon_7"
+                app:layout_constraintBottom_toBottomOf="@+id/resistanceButton3"
+                app:layout_constraintEnd_toStartOf="@+id/powerButton2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/resistanceButton3"
+                app:layout_constraintTop_toTopOf="@+id/resistanceButton3" />
+
+            <ImageButton
+                android:id="@+id/powerButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/image_btn_bgd"
+                android:elevation="@dimen/elevation"
+                android:src="@drawable/icon_8"
+                app:layout_constraintBottom_toBottomOf="@+id/powerButton1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/powerButton1"
+                app:layout_constraintTop_toTopOf="@+id/powerButton1" />
+
+            <ImageButton
+                android:id="@+id/powerButton3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/image_btn_bgd"
+                android:elevation="@dimen/elevation"
+                android:src="@drawable/icon_9"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/currentButton1"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/resistanceButton2" />
+
+            <ImageButton
+                android:id="@+id/currentButton1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/image_btn_bgd"
+                android:elevation="@dimen/elevation"
+                android:src="@drawable/icon_10"
+                app:layout_constraintBottom_toBottomOf="@+id/powerButton3"
+                app:layout_constraintEnd_toStartOf="@+id/currentButton2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/powerButton3"
+                app:layout_constraintTop_toTopOf="@+id/powerButton3" />
+
+            <ImageButton
+                android:id="@+id/currentButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/image_btn_bgd"
+                android:elevation="@dimen/elevation"
+                android:src="@drawable/icon_11"
+                app:layout_constraintBottom_toBottomOf="@+id/currentButton1"
+                app:layout_constraintEnd_toStartOf="@+id/currentButton3"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/currentButton1"
+                app:layout_constraintTop_toTopOf="@+id/currentButton1" />
+
+            <ImageButton
+                android:id="@+id/currentButton3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/image_btn_bgd"
+                android:elevation="@dimen/elevation"
+                android:src="@drawable/icon_12"
+                app:layout_constraintBottom_toBottomOf="@+id/currentButton2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/currentButton2"
+                app:layout_constraintTop_toTopOf="@+id/currentButton2" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
     <EditText
         android:id="@+id/ohmInputBox1"
         style="@style/Widget.AppCompat.AutoCompleteTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:background="@drawable/textview_btn_bgd"
+        android:background="@drawable/edit_text_bg"
         android:elevation="@dimen/elevation"
         android:ems="10"
         android:inputType="number|numberDecimal"
@@ -65,34 +230,36 @@
         app:layout_constraintEnd_toStartOf="@+id/ohmInputBox2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ohmCircleMenu" />
+        app:layout_constraintTop_toBottomOf="@+id/cardViewOhm" />
 
     <EditText
         android:id="@+id/ohmInputBox2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/textview_btn_bgd"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/edit_text_bg"
         android:elevation="@dimen/elevation"
         android:ems="10"
         android:inputType="number|numberDecimal"
         android:minHeight="48dp"
         android:paddingStart="@dimen/start"
         android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/ohmInputBox1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/ohmInputBox1"
-        app:layout_constraintTop_toBottomOf="@+id/ohmCircleMenu" />
+        app:layout_constraintTop_toTopOf="@+id/ohmInputBox1" />
+
 
     <Button
         android:id="@+id/ohmaCalcButton"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/button_bg_solid"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/rounded_btn_solid"
         android:elevation="@dimen/elevation"
         android:paddingStart="64dp"
         android:paddingTop="4dp"
@@ -115,9 +282,22 @@
         android:background="@drawable/textview_btn_bgd"
         android:elevation="@dimen/elevation"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/adViewOhmsLaw"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ohmaCalcButton" />
 
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adViewOhmsLaw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="4dp"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

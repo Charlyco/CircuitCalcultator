@@ -27,12 +27,17 @@
     <string name="transformers">3-Phase Transformers</string>
     <string name="delta_to_star">Delta to Star</string>
     <string name="star_to_delta">Star to Delta</string>
-    <string name="transformer_description">3-Phase Transformer</string>
+    <string name="transformer_description">Star/Delta Transformation</string>
     <string name="box1">0.0</string>
     <string name="to_be_designed">BACK GROUND TO BE DESIGNED</string>
     <string name="voltage">Potential Difference (V)</string>
     <string name="current">Current (A)</string>
     <string name="resistance">Resistance (R)</string>
     <string name="power">Power (W)</string>
+    <string name="to_do">Blank space yet to be implemented</string>
+    <string name="menu_item1">Feedback</string>
+    <string name="charlyco_tech">Charlyco Technologies</string>
+    <string name="star_delta_transform">Start/Delta Circuit</string>
+    <string name="star">Image of star circuit</string>
 
 </resources>

@@ -1,5 +1,7 @@
 package com.limitless.circuitcalulator.calculations
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,9 +12,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.fragment.findNavController
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import com.limitless.circuitcalulator.R
 import com.limitless.circuitcalulator.databinding.FragmentResistorColorCodeBinding
 import com.limitless.circuitcalulator.utilities.ColourCode
+import com.limitless.circuitcalulator.utilities.Utils
 import com.limitless.circuitcalulator.viewModels.ColorCodeViewModel
 import com.limitless.circuitcalulator.viewModels.ColorCodeViewModelFactory
 import kotlin.math.pow
@@ -33,6 +39,8 @@ class ResistorColorCodeFragment : Fragment(), AdapterView.OnItemSelectedListener
     private lateinit var toolbar: Toolbar
     private lateinit var selectedColours: ColourCode
     private lateinit var resultTextView: TextView
+    private lateinit var adView: AdView
+    private val utils: Utils = Utils()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,6 +61,16 @@ class ResistorColorCodeFragment : Fragment(), AdapterView.OnItemSelectedListener
 
         toolbar = binding.colorCodeToolbar
         toolbar.title = getString(R.string.color_code_frag_title)
+        toolbar.inflateMenu(R.menu.main_menu)
+        toolbar.setOnMenuItemClickListener{
+            when(it.itemId) {
+                R.id.feedback -> {
+                    utils.sendFeedback(requireActivity())
+                    true
+                }
+                else -> false
+            }
+        }
         toolbar.setNavigationOnClickListener {
             findNavController().navigate(
                 R.id.action_resistorColorCodeFragment_to_mainScreenFragment)
@@ -80,6 +98,11 @@ class ResistorColorCodeFragment : Fragment(), AdapterView.OnItemSelectedListener
                 colourSpinner4.adapter = adapter
             }
         }
+        adView = binding.adViewColor
+        MobileAds.initialize(requireActivity()) {}
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
+
         return binding.root
     }
 

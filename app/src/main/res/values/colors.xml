@@ -16,5 +16,5 @@
     <color name="app_red">#F70000</color>
     <color name="hint_text">#263238</color>
     <color name="transparent">#00F0F3F8</color>
-    <color name="semi_transparent">#00FF6400</color>
+    <color name="semi_transparent">#1AFF6400</color>
 </resources>
